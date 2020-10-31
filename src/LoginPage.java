@@ -3,7 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class ViewPackages {
+public class LoginPage {
 
 	private JFrame frame;
 
@@ -14,7 +14,7 @@ public class ViewPackages {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewPackages window = new ViewPackages();
+					LoginPage window = new LoginPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -26,7 +26,7 @@ public class ViewPackages {
 	/**
 	 * Create the application.
 	 */
-	public ViewPackages() {
+	public LoginPage() {
 		initialize();
 	}
 

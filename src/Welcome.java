@@ -1,23 +1,23 @@
 import java.awt.EventQueue;
-import java.awt.Image;
-import java.awt.geom.RoundRectangle2D;
+//import java.awt.Image;
+//import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.MatteBorder;
+//import javax.swing.border.EtchedBorder;
+//import javax.swing.border.MatteBorder;
 
 
 
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+//import javax.swing.ImageIcon;
+//import javax.swing.SwingConstants;
+//import javax.swing.JTextField;
 import java.awt.Font;
-import javax.swing.JEditorPane;
-import javax.swing.JTextPane;
+//import javax.swing.JEditorPane;
+//import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -87,10 +87,6 @@ public class Welcome {
 		lblNewLabel_3.setBounds(443, 225, 222, 61);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setBounds(443, 289, 46, 14);
-		frame.getContentPane().add(lblNewLabel_4);
-		
 		JButton btnNewButton = new JButton("View Packages");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,9 +96,31 @@ public class Welcome {
 	
 			}
 		});
-		btnNewButton.setBounds(531, 318, 134, 34);
+		btnNewButton.setBounds(649, 240, 134, 34);
 	
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Register");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegisterPage register = new RegisterPage();
+				register.NewScreen();
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setBounds(455, 380, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginPage login = new LoginPage();
+				login.NewScreen();
+				frame.dispose();
+			}
+		});
+		btnLogin.setBounds(659, 380, 89, 23);
+		frame.getContentPane().add(btnLogin);
 		
 		
 	}
