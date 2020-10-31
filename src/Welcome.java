@@ -87,11 +87,11 @@ public class Welcome {
 		lblNewLabel_3.setBounds(443, 225, 222, 61);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("View Packages");
+		JButton btnNewButton = new JButton("View Tours");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewPackages viewpack = new ViewPackages();
-				viewpack.NewScreen();
+				ViewTours view = new ViewTours();
+				view.NewScreen();
 				frame.dispose();
 	
 			}
