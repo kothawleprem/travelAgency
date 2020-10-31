@@ -96,7 +96,7 @@ public class Welcome {
 	
 			}
 		});
-		btnNewButton.setBounds(649, 240, 134, 34);
+		btnNewButton.setBounds(533, 319, 134, 34);
 	
 		frame.getContentPane().add(btnNewButton);
 		
