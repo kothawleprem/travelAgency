@@ -21,6 +21,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+//import javax.swing.SwingConstants;
 
 public class Welcome {
 
@@ -62,32 +64,43 @@ public class Welcome {
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.LIGHT_GRAY, Color.BLACK, null));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 11, 380, 420);
+		panel.setBounds(10, 11, 365, 420);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(Welcome.class.getResource("/images/welcome.png")));
+		lblNewLabel_4.setBounds(10, 11, 345, 398);
+		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel = new JLabel("Travel Agency");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblNewLabel.setBounds(491, 35, 230, 50);
+		lblNewLabel.setBounds(486, 53, 230, 50);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Best Offers\r\n\r\n");
+		JLabel lblNewLabel_1 = new JLabel("Best Deals Everyday!!");
+		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Traditional Arabic", Font.PLAIN, 24));
 		lblNewLabel_1.setBounds(443, 146, 340, 50);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Financial Support!!");
+		JLabel lblNewLabel_2 = new JLabel("Easy Finance");
+		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Traditional Arabic", Font.PLAIN, 24));
 		lblNewLabel_2.setBounds(443, 180, 222, 61);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Fantastic Reviews");
+		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Traditional Arabic", Font.PLAIN, 24));
 		lblNewLabel_3.setBounds(443, 225, 222, 61);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("View Tours");
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewTours view = new ViewTours();
@@ -96,11 +109,14 @@ public class Welcome {
 	
 			}
 		});
-		btnNewButton.setBounds(533, 319, 134, 34);
+		btnNewButton.setBounds(524, 317, 129, 31);
 	
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Register");
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setForeground(Color.BLACK);
+		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegisterPage register = new RegisterPage();
@@ -108,10 +124,13 @@ public class Welcome {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(455, 380, 89, 23);
+		btnNewButton_1.setBounds(439, 376, 101, 31);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setBorderPainted(false);
+		btnLogin.setForeground(Color.BLACK);
+		btnLogin.setBackground(Color.WHITE);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage login = new LoginPage();
@@ -119,11 +138,9 @@ public class Welcome {
 				frame.dispose();
 			}
 		});
-		btnLogin.setBounds(659, 380, 89, 23);
+		btnLogin.setBounds(635, 376, 101, 31);
 		frame.getContentPane().add(btnLogin);
 		
 		
 	}
-
-
 }
