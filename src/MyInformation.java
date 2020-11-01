@@ -7,6 +7,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+//import javax.swing.JTextPane;
 
 public class MyInformation {
 
@@ -44,23 +47,28 @@ public class MyInformation {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("My Profile");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNewLabel.setBounds(318, 45, 171, 27);
+		lblNewLabel.setForeground(Color.YELLOW);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setBounds(121, 46, 173, 52);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Name");
-		lblNewLabel_1.setBounds(92, 113, 46, 14);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(25, 117, 109, 27);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(92, 160, 46, 14);
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblEmail.setBounds(25, 192, 109, 27);
 		frame.getContentPane().add(lblEmail);
 		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(92, 205, 46, 14);
-		frame.getContentPane().add(lblPassword);
 		
 		JButton btnNewButton = new JButton("Update Information");
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateMyInformation upmyinfo = new UpdateMyInformation();
@@ -68,10 +76,13 @@ public class MyInformation {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(132, 321, 127, 27);
+		btnNewButton.setBounds(36, 321, 127, 39);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton button = new JButton("Dashboard");
+		button.setBorderPainted(false);
+		button.setForeground(Color.BLACK);
+		button.setBackground(Color.WHITE);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDashboard userdb = new UserDashboard();
@@ -80,12 +91,59 @@ public class MyInformation {
 						
 			}
 		});
-		button.setBounds(455, 323, 127, 27);
+		button.setBounds(269, 321, 127, 39);
 		frame.getContentPane().add(button);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(448, 11, 346, 420);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(MyInformation.class.getResource("/images/myinfo.png")));
+		lblNewLabel_2.setBounds(10, 11, 326, 398);
+		panel.add(lblNewLabel_2);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setForeground(Color.WHITE);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUsername.setBounds(25, 154, 109, 27);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblPhoneNumber = new JLabel("Phone Number");
+		lblPhoneNumber.setForeground(Color.WHITE);
+		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPhoneNumber.setBounds(25, 230, 138, 27);
+		frame.getContentPane().add(lblPhoneNumber);
+		
+		JLabel lblNewLabel_3 = new JLabel("Prem Kothawle");
+		lblNewLabel_3.setForeground(Color.YELLOW);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_3.setBounds(185, 117, 184, 27);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lbluname = new JLabel("prem29");
+		lbluname.setForeground(Color.YELLOW);
+		lbluname.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbluname.setBackground(Color.WHITE);
+		lbluname.setBounds(185, 154, 127, 27);
+		frame.getContentPane().add(lbluname);
+		
+		JLabel lbluemail = new JLabel("kothawleprem@gmail.com");
+		lbluemail.setForeground(Color.YELLOW);
+		lbluemail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbluemail.setBounds(185, 192, 266, 27);
+		frame.getContentPane().add(lbluemail);
+		
+		JLabel label = new JLabel("9123456780");
+		label.setForeground(Color.YELLOW);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label.setBounds(183, 230, 145, 27);
+		frame.getContentPane().add(label);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 	}
-
 }
