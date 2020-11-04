@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JPasswordField;
 
 public class RegisterPage {
 
@@ -17,8 +21,8 @@ public class RegisterPage {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField textField_4;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -85,11 +89,6 @@ public class RegisterPage {
 		textField_2.setBounds(200, 200, 176, 20);
 		frame.getContentPane().add(textField_2);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(200, 300, 176, 20);
-		frame.getContentPane().add(textField_3);
-		
 		JLabel lblPhone = new JLabel("Phone");
 		lblPhone.setForeground(Color.WHITE);
 		lblPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -114,13 +113,13 @@ public class RegisterPage {
 						
 			}
 		});
-		btnNewButton.setBounds(139, 348, 110, 23);
+		btnNewButton.setBounds(230, 350, 110, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("Already have an Account?");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(45, 379, 235, 25);
+		lblNewLabel_2.setBounds(45, 395, 235, 25);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNewButton_1 = new JButton("Login");
@@ -134,7 +133,7 @@ public class RegisterPage {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(308, 384, 89, 23);
+		btnNewButton_1.setBounds(308, 400, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JLabel lblUsername = new JLabel("Username");
@@ -158,6 +157,26 @@ public class RegisterPage {
 		lblNewLabel_3.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/regi.png")));
 		lblNewLabel_3.setBounds(30, 11, 314, 387);
 		panel.add(lblNewLabel_3);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("");
+		chckbxNewCheckBox.setBackground(new Color(65, 105, 225));
+		chckbxNewCheckBox.setBounds(45, 337, 28, 36);
+		frame.getContentPane().add(chckbxNewCheckBox);
+		
+		JLabel lblNewLabel_4 = new JLabel("I Agree the T&C.");
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		lblNewLabel_4.setBounds(81, 347, 102, 19);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(200, 302, 176, 20);
+		frame.getContentPane().add(passwordField);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

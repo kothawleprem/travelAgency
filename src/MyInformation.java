@@ -141,6 +141,18 @@ public class MyInformation {
 		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		label.setBounds(183, 230, 145, 27);
 		frame.getContentPane().add(label);
+		
+		JLabel lblNewLabel_4 = new JLabel("City");
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_4.setBounds(25, 268, 46, 27);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		JLabel lblMumbai = new JLabel("Mumbai");
+		lblMumbai.setForeground(Color.YELLOW);
+		lblMumbai.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMumbai.setBounds(185, 268, 145, 27);
+		frame.getContentPane().add(lblMumbai);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

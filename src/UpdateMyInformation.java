@@ -18,6 +18,7 @@ public class UpdateMyInformation {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -140,6 +141,17 @@ public class UpdateMyInformation {
 		btnCancel.setBackground(Color.WHITE);
 		btnCancel.setBounds(641, 336, 101, 33);
 		frame.getContentPane().add(btnCancel);
+		
+		JLabel lblCity = new JLabel("City");
+		lblCity.setForeground(Color.WHITE);
+		lblCity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCity.setBounds(411, 288, 138, 27);
+		frame.getContentPane().add(lblCity);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(559, 288, 206, 20);
+		frame.getContentPane().add(textField_4);
 		
 	}
 }

@@ -74,6 +74,13 @@ public class UserDashboard {
 		frame.getContentPane().add(btnAddInformation);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LogoutPage logout = new LogoutPage();
+				logout.NewScreen();
+				frame.dispose();
+			}
+		});
 		btnLogout.setBorderPainted(false);
 		btnLogout.setForeground(Color.BLACK);
 		btnLogout.setBackground(Color.WHITE);
