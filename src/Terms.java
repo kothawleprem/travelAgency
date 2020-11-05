@@ -49,7 +49,7 @@ public class Terms {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, 11, 784, 377);
+		panel.setBounds(10, 11, 784, 389);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -94,13 +94,16 @@ public class Terms {
 		label_4.setBounds(15, 340, 12, 14);
 		panel.add(label_4);
 		
-		JButton btnNewButton = new JButton("OK");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(Terms.class.getResource("/images/ok.png")));
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBorderPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(350, 394, 89, 23);
+		btnNewButton.setBounds(318, 407, 130, 35);
 		frame.getContentPane().add(btnNewButton);
 		
 		

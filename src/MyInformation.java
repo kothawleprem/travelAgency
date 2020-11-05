@@ -65,10 +65,11 @@ public class MyInformation {
 		frame.getContentPane().add(lblEmail);
 		
 		
-		JButton btnNewButton = new JButton("Update Information");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(MyInformation.class.getResource("/images/Update_button.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateMyInformation upmyinfo = new UpdateMyInformation();
@@ -76,13 +77,14 @@ public class MyInformation {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(36, 321, 127, 39);
+		btnNewButton.setBounds(33, 336, 130, 30);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton button = new JButton("Dashboard");
+		JButton button = new JButton("");
+		button.setIcon(new ImageIcon(MyInformation.class.getResource("/images/dashboard.png")));
 		button.setBorderPainted(false);
 		button.setForeground(Color.BLACK);
-		button.setBackground(Color.WHITE);
+		button.setBackground(new Color(65, 105, 225));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDashboard userdb = new UserDashboard();
@@ -91,7 +93,7 @@ public class MyInformation {
 						
 			}
 		});
-		button.setBounds(269, 321, 127, 39);
+		button.setBounds(239, 336, 130, 30);
 		frame.getContentPane().add(button);
 		
 		JPanel panel = new JPanel();

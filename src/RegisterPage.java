@@ -101,10 +101,11 @@ public class RegisterPage {
 		lblPassword.setBounds(45, 290, 110, 36);
 		frame.getContentPane().add(lblPassword);
 		
-		JButton btnNewButton = new JButton("Register");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/register.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDashboard userdb = new UserDashboard();
@@ -113,7 +114,7 @@ public class RegisterPage {
 						
 			}
 		});
-		btnNewButton.setBounds(230, 350, 110, 23);
+		btnNewButton.setBounds(222, 341, 130, 34);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("Already have an Account?");
@@ -122,10 +123,11 @@ public class RegisterPage {
 		lblNewLabel_2.setBounds(45, 395, 235, 25);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JButton btnNewButton_1 = new JButton("Login");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/loginbt.png")));
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setBackground(new Color(65, 105, 225));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage login = new LoginPage();
@@ -133,7 +135,7 @@ public class RegisterPage {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(308, 400, 89, 23);
+		btnNewButton_1.setBounds(281, 395, 130, 30);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JLabel lblUsername = new JLabel("Username");

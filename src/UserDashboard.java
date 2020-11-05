@@ -45,10 +45,11 @@ public class UserDashboard {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("My Bookings");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(UserDashboard.class.getResource("/images/mybookings.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyBookings mybook = new MyBookings();
@@ -56,13 +57,14 @@ public class UserDashboard {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(543, 126, 124, 31);
+		btnNewButton.setBounds(543, 126, 131, 31);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnAddInformation = new JButton("My Information");
+		JButton btnAddInformation = new JButton("");
+		btnAddInformation.setIcon(new ImageIcon(UserDashboard.class.getResource("/images/myinfobtn.png")));
 		btnAddInformation.setBorderPainted(false);
 		btnAddInformation.setForeground(Color.BLACK);
-		btnAddInformation.setBackground(Color.WHITE);
+		btnAddInformation.setBackground(new Color(65, 105, 225));
 		btnAddInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyInformation myinfo =new MyInformation();
@@ -70,10 +72,11 @@ public class UserDashboard {
 				frame.dispose();
 			}
 		});
-		btnAddInformation.setBounds(543, 193, 124, 31);
+		btnAddInformation.setBounds(543, 193, 131, 31);
 		frame.getContentPane().add(btnAddInformation);
 		
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("");
+		btnLogout.setIcon(new ImageIcon(UserDashboard.class.getResource("/images/logoutbtn.png")));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LogoutPage logout = new LogoutPage();
@@ -83,14 +86,15 @@ public class UserDashboard {
 		});
 		btnLogout.setBorderPainted(false);
 		btnLogout.setForeground(Color.BLACK);
-		btnLogout.setBackground(Color.WHITE);
-		btnLogout.setBounds(543, 327, 124, 31);
+		btnLogout.setBackground(new Color(65, 105, 225));
+		btnLogout.setBounds(543, 327, 130, 30);
 		frame.getContentPane().add(btnLogout);
 		
-		JButton btnViewTours = new JButton("View Tours");
+		JButton btnViewTours = new JButton("");
+		btnViewTours.setIcon(new ImageIcon(UserDashboard.class.getResource("/images/viewt.png")));
 		btnViewTours.setBorderPainted(false);
 		btnViewTours.setForeground(Color.BLACK);
-		btnViewTours.setBackground(Color.WHITE);
+		btnViewTours.setBackground(new Color(65, 105, 225));
 		btnViewTours.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ViewTours view = new ViewTours();
@@ -98,7 +102,7 @@ public class UserDashboard {
 				frame.dispose();
 			}
 		});
-		btnViewTours.setBounds(543, 260, 124, 31);
+		btnViewTours.setBounds(543, 260, 130, 34);
 		frame.getContentPane().add(btnViewTours);
 		
 		JLabel lblNewLabel = new JLabel("User Dashboard");

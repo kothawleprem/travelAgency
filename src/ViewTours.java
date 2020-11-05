@@ -91,7 +91,8 @@ public class ViewTours {
 		label_4.setBounds(440, 202, 179, 180);
 		panel_3.add(label_4);
 		
-		JButton btnNewButton = new JButton("Home");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(ViewTours.class.getResource("/images/homebtn.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent e) {
@@ -103,8 +104,8 @@ public class ViewTours {
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBounds(23, 385, 101, 31);
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBounds(10, 385, 130, 31);
 		frame.getContentPane().add(btnNewButton);
 		
 		JPanel panel = new JPanel();
@@ -112,7 +113,8 @@ public class ViewTours {
 		panel.setBounds(10, 25, 127, 302);
 		frame.getContentPane().add(panel);
 		
-		JButton btnDashboard = new JButton("Dashboard");
+		JButton btnDashboard = new JButton("");
+		btnDashboard.setIcon(new ImageIcon(ViewTours.class.getResource("/images/dashboard.png")));
 		btnDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDashboard userdb = new UserDashboard();
@@ -123,8 +125,8 @@ public class ViewTours {
 		btnDashboard.setForeground(Color.BLACK);
 		btnDashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDashboard.setBorderPainted(false);
-		btnDashboard.setBackground(Color.WHITE);
-		btnDashboard.setBounds(23, 338, 101, 31);
+		btnDashboard.setBackground(new Color(65, 105, 225));
+		btnDashboard.setBounds(10, 338, 130, 30);
 		frame.getContentPane().add(btnDashboard);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

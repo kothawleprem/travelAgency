@@ -12,12 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import javax.swing.JPasswordField;
 
 public class LoginPage {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -67,15 +68,11 @@ public class LoginPage {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(203, 163, 194, 20);
-		frame.getContentPane().add(textField_1);
-		
-		JButton btnNewButton = new JButton("Submit");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(LoginPage.class.getResource("/images/submitbtn.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDashboard userdb = new UserDashboard();
@@ -84,7 +81,7 @@ public class LoginPage {
 						
 			}
 		});
-		btnNewButton.setBounds(136, 223, 102, 29);
+		btnNewButton.setBounds(136, 223, 130, 35);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNoAccountSign = new JLabel("Need an Account?");
@@ -93,10 +90,11 @@ public class LoginPage {
 		lblNoAccountSign.setBounds(46, 314, 179, 29);
 		frame.getContentPane().add(lblNoAccountSign);
 		
-		JButton btnRegister = new JButton("Register");
+		JButton btnRegister = new JButton("");
+		btnRegister.setIcon(new ImageIcon(LoginPage.class.getResource("/images/register.png")));
 		btnRegister.setBorderPainted(false);
 		btnRegister.setForeground(Color.BLACK);
-		btnRegister.setBackground(Color.WHITE);
+		btnRegister.setBackground(new Color(65, 105, 225));
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegisterPage register = new RegisterPage();
@@ -104,7 +102,7 @@ public class LoginPage {
 				frame.dispose();
 			}
 		});
-		btnRegister.setBounds(249, 314, 89, 23);
+		btnRegister.setBounds(249, 314, 130, 35);
 		frame.getContentPane().add(btnRegister);
 		
 		JLabel lblAdminLogin = new JLabel("Admin Login?");
@@ -113,10 +111,11 @@ public class LoginPage {
 		lblAdminLogin.setBounds(46, 377, 128, 29);
 		frame.getContentPane().add(lblAdminLogin);
 		
-		JButton btnAdmin = new JButton("Admin");
+		JButton btnAdmin = new JButton("");
+		btnAdmin.setIcon(new ImageIcon(LoginPage.class.getResource("/images/adminbtn.png")));
 		btnAdmin.setBorderPainted(false);
 		btnAdmin.setForeground(Color.BLACK);
-		btnAdmin.setBackground(Color.WHITE);
+		btnAdmin.setBackground(new Color(65, 105, 225));
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AdminLoginPage adminlog = new AdminLoginPage();
@@ -125,7 +124,7 @@ public class LoginPage {
 				
 			}
 		});
-		btnAdmin.setBounds(249, 384, 89, 23);
+		btnAdmin.setBounds(249, 384, 130, 35);
 		frame.getContentPane().add(btnAdmin);
 		
 		JLabel lblNewLabel_2 = new JLabel("Login");
@@ -144,6 +143,10 @@ public class LoginPage {
 		lblNewLabel_3.setIcon(new ImageIcon(LoginPage.class.getResource("/images/login.png")));
 		lblNewLabel_3.setBounds(27, 11, 325, 398);
 		panel.add(lblNewLabel_3);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(203, 167, 194, 20);
+		frame.getContentPane().add(passwordField);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

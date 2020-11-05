@@ -77,8 +77,8 @@ public class Welcome {
 		panel.add(lblNewLabel_4);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setBounds(520, 316, 130, 30);
-		btnNewButton.setIcon(new ImageIcon(Welcome.class.getResource("/images/button1.png")));
+		btnNewButton.setBounds(519, 331, 130, 34);
+		btnNewButton.setIcon(new ImageIcon(Welcome.class.getResource("/images/viewt.png")));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
@@ -95,7 +95,7 @@ public class Welcome {
 		
 		
 		JLabel lblNewLabel = new JLabel("Travel Agency");
-		lblNewLabel.setBounds(482, 85, 230, 50);
+		lblNewLabel.setBounds(483, 99, 230, 50);
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		frame.getContentPane().add(lblNewLabel);
@@ -126,7 +126,7 @@ public class Welcome {
 				frame.dispose();
 			}
 		});
-		button.setIcon(new ImageIcon(Welcome.class.getResource("/images/login_button.png")));
+		button.setIcon(new ImageIcon(Welcome.class.getResource("/images/loginbt.png")));
 		button.setForeground(Color.BLACK);
 		button.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button.setBorderPainted(false);
@@ -142,13 +142,18 @@ public class Welcome {
 				frame.dispose();
 			}
 		});
-		button_1.setIcon(new ImageIcon(Welcome.class.getResource("/images/login_button.png")));
+		button_1.setIcon(new ImageIcon(Welcome.class.getResource("/images/register.png")));
 		button_1.setForeground(Color.BLACK);
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		button_1.setBorderPainted(false);
 		button_1.setBackground(new Color(65, 105, 225));
-		button_1.setBounds(424, 376, 130, 30);
+		button_1.setBounds(424, 376, 130, 35);
 		frame.getContentPane().add(button_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(Welcome.class.getResource("/images/terna.png")));
+		lblNewLabel_5.setBounds(503, 11, 178, 81);
+		frame.getContentPane().add(lblNewLabel_5);
 		
 		
 	}

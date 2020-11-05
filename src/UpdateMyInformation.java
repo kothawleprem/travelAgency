@@ -114,7 +114,8 @@ public class UpdateMyInformation {
 		textField_3.setBounds(559, 257, 206, 20);
 		frame.getContentPane().add(textField_3);
 		
-		JButton btnNewButton = new JButton("Update");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/Update_button.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyInformation myinfo =new MyInformation();
@@ -124,11 +125,12 @@ public class UpdateMyInformation {
 		});
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBounds(460, 336, 101, 33);
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBounds(437, 336, 130, 30);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton("");
+		btnCancel.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/cancel.png")));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MyInformation myinfo =new MyInformation();
@@ -138,8 +140,8 @@ public class UpdateMyInformation {
 		});
 		btnCancel.setBorderPainted(false);
 		btnCancel.setForeground(Color.BLACK);
-		btnCancel.setBackground(Color.WHITE);
-		btnCancel.setBounds(641, 336, 101, 33);
+		btnCancel.setBackground(new Color(65, 105, 225));
+		btnCancel.setBounds(627, 336, 130, 35);
 		frame.getContentPane().add(btnCancel);
 		
 		JLabel lblCity = new JLabel("City");
