@@ -44,7 +44,7 @@ public class LogoutPage {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 11, 395, 420);
+		panel.setBounds(10, 11, 398, 420);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		

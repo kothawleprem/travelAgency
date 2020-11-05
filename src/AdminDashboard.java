@@ -67,6 +67,9 @@ public class AdminDashboard {
 		JButton button = new JButton("View Bookings");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AdminViewBookings advbook = new AdminViewBookings();
+				advbook.NewScreen();
+				frame.dispose();
 			}
 		});
 		button.setForeground(Color.BLACK);
@@ -76,6 +79,13 @@ public class AdminDashboard {
 		frame.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("View Tours");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewTours view = new ViewTours();
+				view.NewScreen();
+				frame.dispose();
+			}
+		});
 		button_1.setForeground(Color.BLACK);
 		button_1.setBorderPainted(false);
 		button_1.setBackground(Color.WHITE);
@@ -83,11 +93,32 @@ public class AdminDashboard {
 		frame.getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("Logout");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LogoutPage logout = new LogoutPage();
+				logout.NewScreen();
+				frame.dispose();
+			}
+		});
 		button_2.setForeground(Color.BLACK);
 		button_2.setBorderPainted(false);
 		button_2.setBackground(Color.WHITE);
 		button_2.setBounds(527, 292, 124, 31);
 		frame.getContentPane().add(button_2);
+		
+		JButton button_3 = new JButton("Add Tours");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdminAddTours addTours = new AdminAddTours();
+				addTours.NewScreen();
+				frame.dispose();
+			}
+		});
+		button_3.setForeground(Color.BLACK);
+		button_3.setBorderPainted(false);
+		button_3.setBackground(Color.WHITE);
+		button_3.setBounds(527, 173, 124, 31);
+		frame.getContentPane().add(button_3);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

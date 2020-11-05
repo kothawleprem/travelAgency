@@ -164,11 +164,13 @@ public class RegisterPage {
 		frame.getContentPane().add(chckbxNewCheckBox);
 		
 		JLabel lblNewLabel_4 = new JLabel("I Agree the T&C.");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Terms terms = new Terms();
+				terms.NewScreen();
 			}
 		});
 		lblNewLabel_4.setBounds(81, 347, 102, 19);
