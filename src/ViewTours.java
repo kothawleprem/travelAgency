@@ -55,10 +55,9 @@ public class ViewTours {
 		
 		JLabel lblNewLabel = new JLabel("=");
 		lblNewLabel.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
+				TourInfo tourin = new TourInfo();
+				tourin.NewScreen();
 				frame.dispose();
 			}
 		});
@@ -112,6 +111,12 @@ public class ViewTours {
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(10, 25, 127, 302);
 		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(ViewTours.class.getResource("/images/tree.png")));
+		lblNewLabel_1.setBounds(0, 0, 127, 302);
+		panel.add(lblNewLabel_1);
 		
 		JButton btnDashboard = new JButton("");
 		btnDashboard.setIcon(new ImageIcon(ViewTours.class.getResource("/images/dashboard.png")));

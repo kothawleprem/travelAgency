@@ -64,10 +64,11 @@ public class AdminLoginPage {
 		lblNewLabel_1.setBounds(46, 159, 128, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Submit");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon(AdminLoginPage.class.getResource("/images/submitbtn.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AdminDashboard admindb = new AdminDashboard();
@@ -76,7 +77,7 @@ public class AdminLoginPage {
 						
 			}
 		});
-		btnNewButton.setBounds(136, 223, 102, 29);
+		btnNewButton.setBounds(116, 223, 150, 35);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblAdminLogin = new JLabel("User Login?");
@@ -85,10 +86,11 @@ public class AdminLoginPage {
 		lblAdminLogin.setBounds(46, 320, 128, 29);
 		frame.getContentPane().add(lblAdminLogin);
 		
-		JButton btnAdmin = new JButton("User");
+		JButton btnAdmin = new JButton("");
+		btnAdmin.setIcon(new ImageIcon(AdminLoginPage.class.getResource("/images/User.png")));
 		btnAdmin.setBorderPainted(false);
 		btnAdmin.setForeground(Color.BLACK);
-		btnAdmin.setBackground(Color.WHITE);
+		btnAdmin.setBackground(new Color(65, 105, 225));
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage login = new LoginPage();
@@ -97,7 +99,7 @@ public class AdminLoginPage {
 				
 			}
 		});
-		btnAdmin.setBounds(249, 327, 89, 23);
+		btnAdmin.setBounds(249, 320, 130, 35);
 		frame.getContentPane().add(btnAdmin);
 		
 		JLabel lblNewLabel_2 = new JLabel("Admin Login");

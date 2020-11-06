@@ -1,21 +1,18 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
+import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MyBookings {
+public class OurInfo {
 
 	private JFrame frame;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -24,7 +21,7 @@ public class MyBookings {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyBookings window = new MyBookings();
+					OurInfo window = new OurInfo();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +33,7 @@ public class MyBookings {
 	/**
 	 * Create the application.
 	 */
-	public MyBookings() {
+	public OurInfo() {
 		initialize();
 	}
 
@@ -48,40 +45,44 @@ public class MyBookings {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("My Bookings");
-		lblNewLabel.setForeground(Color.YELLOW);
+		JLabel lblNewLabel = new JLabel("Our Info");
+		lblNewLabel.setForeground(new Color(255, 255, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblNewLabel.setBounds(287, 11, 203, 53);
+		lblNewLabel.setBounds(318, 11, 143, 39);
 		frame.getContentPane().add(lblNewLabel);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 364, 409, -251);
-		frame.getContentPane().add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setBackground(Color.WHITE);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(27, 67, 751, 303);
+		panel.setBounds(28, 71, 752, 310);
 		frame.getContentPane().add(panel);
-		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
+				Welcome wel= new Welcome();
+				wel.main(null);
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setIcon(new ImageIcon(OurInfo.class.getResource("/images/back.png")));
 		btnNewButton.setBorderPainted(false);
-		btnNewButton.setIcon(new ImageIcon(MyBookings.class.getResource("/images/back.png")));
-		btnNewButton.setBounds(322, 381, 130, 30);
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBounds(452, 392, 130, 35);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button.setIcon(new ImageIcon(OurInfo.class.getResource("/images/enquiry.png")));
+		button.setBorderPainted(false);
+		button.setBackground(new Color(65, 105, 225));
+		button.setBounds(191, 392, 130, 35);
+		frame.getContentPane().add(button);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 }
