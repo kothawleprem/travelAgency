@@ -4,30 +4,32 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import java.sql.*;
 public class UpdateMyInformation {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textName;
+
+	private JTextField textEmail;
+	private JTextField textPhoneNumber;
+	private JTextField textCity;
 
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(String uname) {
+		final String username = uname;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UpdateMyInformation window = new UpdateMyInformation();
+					UpdateMyInformation window = new UpdateMyInformation(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,14 +41,14 @@ public class UpdateMyInformation {
 	/**
 	 * Create the application.
 	 */
-	public UpdateMyInformation() {
-		initialize();
+	public UpdateMyInformation(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -70,11 +72,11 @@ public class UpdateMyInformation {
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblNewLabel_2 = new JLabel("Name");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(411, 129, 109, 27);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lblName = new JLabel("Name");
+		lblName.setForeground(Color.WHITE);
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblName.setBounds(411, 172, 109, 27);
+		frame.getContentPane().add(lblName);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setForeground(Color.WHITE);
@@ -85,7 +87,7 @@ public class UpdateMyInformation {
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblUsername.setBounds(411, 170, 109, 27);
+		lblUsername.setBounds(411, 134, 109, 27);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number");
@@ -93,48 +95,102 @@ public class UpdateMyInformation {
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblPhoneNumber.setBounds(411, 250, 138, 27);
 		frame.getContentPane().add(lblPhoneNumber);
+		String name = "",email="",phone="",city="";
+		try {
+			Conn c = new Conn();
 		
-		textField = new JTextField();
-		textField.setBounds(559, 136, 206, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+			String sql = "SELECT customer_name,customer_phone,customer_email,customer_city FROM customer WHERE customer_username like '%"+username+"%'";
+		    ResultSet rs = c.s.executeQuery(sql);
+		    while(rs.next())
+            {
+                name = rs.getString(1);    //First Column
+                phone = rs.getString(2);    //Second Column
+                email =rs.getString(3);    //Third Column
+                city = rs.getString(4);
+      //Fourth Column
+            }
+		    		
+		}catch(Exception exp) {
+			
+		}
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(559, 177, 206, 20);
-		frame.getContentPane().add(textField_1);
+		textName = new JTextField();
+		textName.setBounds(559, 179, 206, 20);
+		frame.getContentPane().add(textName);
+		textName.setColumns(10);
+		textName.setText(name);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(559, 217, 206, 20);
-		frame.getContentPane().add(textField_2);
+		JLabel lbluname = new JLabel(""+username);
+		lbluname.setForeground(Color.YELLOW);
+		lbluname.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbluname.setBounds(559, 134, 206, 27);
+		frame.getContentPane().add(lbluname);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(559, 257, 206, 20);
-		frame.getContentPane().add(textField_3);
+		textEmail = new JTextField();
+		textEmail.setColumns(10);
+		textEmail.setBounds(559, 217, 206, 20);
+		frame.getContentPane().add(textEmail);
+		textEmail.setText(email);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/Update_button.png")));
-		btnNewButton.addActionListener(new ActionListener() {
+		textPhoneNumber = new JTextField();
+		textPhoneNumber.setColumns(10);
+		textPhoneNumber.setBounds(559, 257, 206, 20);
+		frame.getContentPane().add(textPhoneNumber);
+		textPhoneNumber.setText(phone);
+		
+		JLabel lblCity = new JLabel("City");
+		lblCity.setForeground(Color.WHITE);
+		lblCity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCity.setBounds(411, 288, 138, 27);
+		frame.getContentPane().add(lblCity);
+		
+		textCity = new JTextField();
+		textCity.setColumns(10);
+		textCity.setBounds(559, 288, 206, 20);
+		frame.getContentPane().add(textCity);
+		textCity.setText(city);
+		
+		JButton btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/Update_button.png")));
+		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyInformation myinfo =new MyInformation();
-				myinfo.NewScreen();
+				Conn c = new Conn();
+				try {
+					String s1 = textName.getText();
+					String s2 = textEmail.getText();
+					String s4 = textCity.getText();
+					String s3 = textPhoneNumber.getText();
+				//	Connection c =  DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");;
+				//	String q1 = "update customer set customer_name = premsk";
+				//	c.s.executeUpdate(q1);
+				//	String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "',
+				//	+'" + password +"','" + city +"','" + phone + "')";
+					 String query = "update customer set customer_name = '"+s1+"',customer_email = '"+s2+"', customer_phone = '"+s3+"',customer_city = '"+s4+"' where customer_username like '"+username+"%'";
+					 c.s.executeUpdate(query);
+					 JOptionPane.showMessageDialog(null, "Customer Detail Updated Successfully");
+				
+				}catch(Exception exp) {
+					System.out.println(exp);
+				}
+				MyInformation myinfo =new MyInformation(username);
+				myinfo.NewScreen(username);
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBackground(new Color(65, 105, 225));
-		btnNewButton.setBounds(437, 336, 130, 30);
-		frame.getContentPane().add(btnNewButton);
+		btnUpdate.setBorderPainted(false);
+		btnUpdate.setForeground(Color.BLACK);
+		btnUpdate.setBackground(new Color(65, 105, 225));
+		btnUpdate.setBounds(437, 336, 130, 30);
+		frame.getContentPane().add(btnUpdate);
 		
 		JButton btnCancel = new JButton("");
 		btnCancel.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/cancel.png")));
 		btnCancel.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				MyInformation myinfo =new MyInformation();
-				myinfo.NewScreen();
+				
+				MyInformation myinfo =new MyInformation(username);
+				myinfo.NewScreen(username);
 				frame.dispose();
 			}
 		});
@@ -144,16 +200,7 @@ public class UpdateMyInformation {
 		btnCancel.setBounds(627, 336, 130, 35);
 		frame.getContentPane().add(btnCancel);
 		
-		JLabel lblCity = new JLabel("City");
-		lblCity.setForeground(Color.WHITE);
-		lblCity.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCity.setBounds(411, 288, 138, 27);
-		frame.getContentPane().add(lblCity);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(559, 288, 206, 20);
-		frame.getContentPane().add(textField_4);
 		
 	}
 }

@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 //import java.awt.BorderLayout;
 //import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
+import java.sql.*;
 
 public class LoginPage {
 
@@ -68,16 +70,41 @@ public class LoginPage {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(203, 167, 194, 20);
+		frame.getContentPane().add(passwordField);
+		frame.setBounds(100, 100, 820, 480);
+		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(LoginPage.class.getResource("/images/submitbtn.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
-				frame.dispose();
+				String username = " ";
+				username=textField.getText();
+	            String pass = passwordField.getText();
+				try {
+					String query = "Select * from customer where customer_username like '"+username+"%' AND customer_password like '"+pass+"%'";
+
+					//String query = "Select * from customer where customer_username like %'"+uname+"'% and customer_password like %'"+pass+"'%";
+					Conn c = new Conn();
+					ResultSet rs = c.s.executeQuery(query);
+					if(rs.next())
+					{
+						UserDashboard userdb = new UserDashboard(username);
+						userdb.NewScreen(username);
+						frame.dispose();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Invalid Login");
+					}
+				}catch (Exception exp) {
+					System.out.println(exp);
+				}
+				
 						
 			}
 		});
@@ -144,10 +171,7 @@ public class LoginPage {
 		lblNewLabel_3.setBounds(27, 11, 325, 398);
 		panel.add(lblNewLabel_3);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(203, 167, 194, 20);
-		frame.getContentPane().add(passwordField);
-		frame.setBounds(100, 100, 820, 480);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

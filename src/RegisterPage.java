@@ -3,6 +3,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -15,14 +17,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPasswordField;
 
+
 public class RegisterPage {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_4;
-	private JPasswordField passwordField;
+	private JTextField cname;
+	private JTextField uemail;
+	private JTextField uphone;
+	private JTextField cusername;
+	private JPasswordField upassword;
 
 	/**
 	 * Launch the application.
@@ -55,12 +58,12 @@ public class RegisterPage {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Register");
-		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel.setBounds(139, 27, 189, 52);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblregister = new JLabel("Register");
+		lblregister.setForeground(Color.YELLOW);
+		lblregister.setBackground(Color.WHITE);
+		lblregister.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblregister.setBounds(139, 27, 189, 52);
+		frame.getContentPane().add(lblregister);
 		
 		JLabel lblNewLabel_1 = new JLabel("Name");
 		lblNewLabel_1.setForeground(Color.WHITE);
@@ -68,10 +71,10 @@ public class RegisterPage {
 		lblNewLabel_1.setBounds(45, 90, 110, 36);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(200, 100, 176, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		cname = new JTextField();
+		cname.setBounds(200, 100, 176, 20);
+		frame.getContentPane().add(cname);
+		cname.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setForeground(Color.WHITE);
@@ -79,15 +82,15 @@ public class RegisterPage {
 		lblEmail.setBounds(45, 140, 110, 36);
 		frame.getContentPane().add(lblEmail);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(200, 150, 176, 20);
-		frame.getContentPane().add(textField_1);
+		uemail = new JTextField();
+		uemail.setColumns(10);
+		uemail.setBounds(200, 150, 176, 20);
+		frame.getContentPane().add(uemail);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(200, 200, 176, 20);
-		frame.getContentPane().add(textField_2);
+		uphone = new JTextField();
+		uphone.setColumns(10);
+		uphone.setBounds(200, 200, 176, 20);
+		frame.getContentPane().add(uphone);
 		
 		JLabel lblPhone = new JLabel("Phone");
 		lblPhone.setForeground(Color.WHITE);
@@ -101,18 +104,80 @@ public class RegisterPage {
 		lblPassword.setBounds(45, 290, 110, 36);
 		frame.getContentPane().add(lblPassword);
 		
-		JButton btnNewButton = new JButton("");
+		
+		
+		final JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/register.png")));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
-				frame.dispose();
-						
-			}
+				String name = cname.getText();
+                String email = uemail.getText();
+                String username = " ";
+                username = cusername.getText();
+                String phone = uphone.getText();
+                String city = "";
+                //int len = mobileNumber.length();
+                @SuppressWarnings("deprecation")
+				String password = upassword.getText();
+                String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "','" + password +  "','" + city +"','" + phone + "')";
+            
+                try {
+                	Conn c = new Conn();
+                	c.s.executeUpdate(query);
+            		JOptionPane.showMessageDialog(null, "Account Created Successfully");
+            		UserDashboard userdb = new UserDashboard(username);
+     				userdb.NewScreen(username);
+     				frame.dispose();
+                	
+                }
+                catch(Exception exp){
+                    System.out.println(exp);
+            }
+                
+                
+                
+                /*   try {
+                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");
+
+                    String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "','" + password +  "','" + city +"','" + phone + "')";
+
+                    Statement sta = connection.createStatement();
+                    int x = sta.executeUpdate(query);
+                    if (x == 0) {
+                    	try {
+                    		/*UserAlreadyPresent uap;
+        	                uap = new UserAlreadyPresent();
+        	                throw uap;
+                    		InvalidPasswordException ipe;
+        	                ipe = new InvalidPasswordException("Please enter "
+        	                        + " valid password of length 8 containing one digit"
+        	                        + " and one Special Symbol");
+        	                
+        	                throw ipe; 
+                    	}
+                    	catch(InvalidPasswordException ipe)
+                    	{
+                    		JOptionPane.showMessageDialog(btnNewButton, ipe.getMessage());
+                    	}
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(btnNewButton,
+                            "Welcome, Your account is sucessfully created");
+                        
+        						
+                    }
+                    UserDashboard userdb = new UserDashboard(username);
+    				userdb.NewScreen(username);
+    				frame.dispose();
+                    connection.close();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }  */
+			}   
+               
 		});
 		btnNewButton.setBounds(222, 341, 130, 34);
 		frame.getContentPane().add(btnNewButton);
@@ -144,10 +209,10 @@ public class RegisterPage {
 		lblUsername.setBounds(45, 240, 110, 36);
 		frame.getContentPane().add(lblUsername);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(200, 250, 176, 20);
-		frame.getContentPane().add(textField_4);
+		cusername = new JTextField();
+		cusername.setColumns(10);
+		cusername.setBounds(200, 250, 176, 20);
+		frame.getContentPane().add(cusername);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
@@ -178,10 +243,22 @@ public class RegisterPage {
 		lblNewLabel_4.setBounds(81, 347, 102, 19);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(200, 302, 176, 20);
-		frame.getContentPane().add(passwordField);
+		upassword = new JPasswordField();
+		upassword.setBounds(200, 302, 176, 20);
+		frame.getContentPane().add(upassword);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+}
+class InvalidPasswordException extends Exception
+{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	InvalidPasswordException(String message)
+    {
+        super(message);
+    }
 }

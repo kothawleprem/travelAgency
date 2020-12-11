@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 //import javax.swing.JTextPane;
-
+import java.sql.*;
 public class MyInformation {
 
 	private JFrame frame;
@@ -18,11 +19,12 @@ public class MyInformation {
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(String uname) {
+		final String username = uname;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyInformation window = new MyInformation();
+					MyInformation window = new MyInformation(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,17 +36,39 @@ public class MyInformation {
 	/**
 	 * Create the application.
 	 */
-	public MyInformation() {
-		initialize();
+	public MyInformation(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
+		String name = "",email="",phone="",city="";    
 		frame = new JFrame();
+		
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
+		
+		try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");
+            Statement selectStmt = connection.createStatement();
+            ResultSet rs = selectStmt.executeQuery("SELECT customer_name,customer_phone,customer_email,customer_city FROM customer WHERE customer_username like '%"+username+"%'");
+            while(rs.next())
+            {
+                name = rs.getString(1);    //First Column
+                phone = rs.getString(2);    //Second Column
+                email =rs.getString(3);    //Third Column
+                city = rs.getString(4);
+      //Fourth Column
+            }
+		}
+		 catch (Exception e) {
+		        e.printStackTrace();
+		 }				
+
+   
+	///	rs = stmt.executeQuery("SELECT customer_name,customer_phone,customer_email FROM customer WHERE customer_username = username");
 		
 		JLabel lblNewLabel = new JLabel("My Profile");
 		lblNewLabel.setForeground(Color.YELLOW);
@@ -52,11 +76,11 @@ public class MyInformation {
 		lblNewLabel.setBounds(121, 46, 173, 52);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(25, 117, 109, 27);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblName = new JLabel("Name");
+		lblName.setForeground(Color.WHITE);
+		lblName.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblName.setBounds(25, 117, 109, 27);
+		frame.getContentPane().add(lblName);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setForeground(Color.WHITE);
@@ -72,8 +96,8 @@ public class MyInformation {
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UpdateMyInformation upmyinfo = new UpdateMyInformation();
-				upmyinfo.NewScreen();
+				UpdateMyInformation upmyinfo = new UpdateMyInformation(username);
+				upmyinfo.NewScreen(username);
 				frame.dispose();
 			}
 		});
@@ -87,8 +111,8 @@ public class MyInformation {
 		button.setBackground(new Color(65, 105, 225));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
+				UserDashboard userdb = new UserDashboard(username);
+				userdb.NewScreen(username);
 				frame.dispose();
 						
 			}
@@ -119,42 +143,41 @@ public class MyInformation {
 		lblPhoneNumber.setBounds(25, 230, 138, 27);
 		frame.getContentPane().add(lblPhoneNumber);
 		
-		JLabel lblNewLabel_3 = new JLabel("Prem Kothawle");
-		lblNewLabel_3.setForeground(Color.YELLOW);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(185, 117, 184, 27);
-		frame.getContentPane().add(lblNewLabel_3);
+		JLabel lblUName = new JLabel(""+name);
+		lblUName.setForeground(Color.YELLOW);
+		lblUName.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUName.setBounds(185, 117, 184, 27);
+		frame.getContentPane().add(lblUName);
 		
-		JLabel lbluname = new JLabel("prem29");
-		lbluname.setForeground(Color.YELLOW);
-		lbluname.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbluname.setBackground(Color.WHITE);
-		lbluname.setBounds(185, 154, 127, 27);
-		frame.getContentPane().add(lbluname);
+		JLabel lblUUname = new JLabel(""+username);
+		lblUUname.setForeground(Color.YELLOW);
+		lblUUname.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUUname.setBounds(185, 154, 127, 27);
+		frame.getContentPane().add(lblUUname);
 		
-		JLabel lbluemail = new JLabel("kothawleprem@gmail.com");
-		lbluemail.setForeground(Color.YELLOW);
-		lbluemail.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbluemail.setBounds(185, 192, 266, 27);
-		frame.getContentPane().add(lbluemail);
+		JLabel lblUemail = new JLabel(""+email);
+		lblUemail.setForeground(Color.YELLOW);
+		lblUemail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUemail.setBounds(185, 192, 266, 27);
+		frame.getContentPane().add(lblUemail);
 		
-		JLabel label = new JLabel("9123456780");
-		label.setForeground(Color.YELLOW);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		label.setBounds(183, 230, 145, 27);
-		frame.getContentPane().add(label);
+		JLabel lblUphone = new JLabel(""+phone);
+		lblUphone.setForeground(Color.YELLOW);
+		lblUphone.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUphone.setBounds(183, 230, 145, 27);
+		frame.getContentPane().add(lblUphone);
 		
-		JLabel lblNewLabel_4 = new JLabel("City");
-		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_4.setBounds(25, 268, 46, 27);
-		frame.getContentPane().add(lblNewLabel_4);
+		JLabel lblCity = new JLabel("City");
+		lblCity.setForeground(Color.WHITE);
+		lblCity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCity.setBounds(25, 268, 46, 27);
+		frame.getContentPane().add(lblCity);
 		
-		JLabel lblMumbai = new JLabel("Mumbai");
-		lblMumbai.setForeground(Color.YELLOW);
-		lblMumbai.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMumbai.setBounds(185, 268, 145, 27);
-		frame.getContentPane().add(lblMumbai);
+		JLabel lblUCity = new JLabel(""+city);
+		lblUCity.setForeground(Color.YELLOW);
+		lblUCity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUCity.setBounds(185, 268, 145, 27);
+		frame.getContentPane().add(lblUCity);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -17,11 +17,12 @@ public class UserDashboard {
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(String uname) {
+		final String username = uname;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UserDashboard window = new UserDashboard();
+					UserDashboard window = new UserDashboard(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,14 +34,14 @@ public class UserDashboard {
 	/**
 	 * Create the application.
 	 */
-	public UserDashboard() {
-		initialize();
+	public UserDashboard(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -67,8 +68,8 @@ public class UserDashboard {
 		btnAddInformation.setBackground(new Color(65, 105, 225));
 		btnAddInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyInformation myinfo =new MyInformation();
-				myinfo.NewScreen();
+				MyInformation myinfo =new MyInformation(username);
+				myinfo.NewScreen(username);
 				frame.dispose();
 			}
 		});
@@ -97,18 +98,18 @@ public class UserDashboard {
 		btnViewTours.setBackground(new Color(65, 105, 225));
 		btnViewTours.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewTours view = new ViewTours();
-				view.NewScreen();
+				ViewTours view = new ViewTours(username);
+				view.NewScreen(username);
 				frame.dispose();
 			}
 		});
 		btnViewTours.setBounds(543, 260, 130, 34);
 		frame.getContentPane().add(btnViewTours);
 		
-		JLabel lblNewLabel = new JLabel("User Dashboard");
+		JLabel lblNewLabel = new JLabel("User"+username);
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblNewLabel.setBounds(495, 40, 227, 49);
+		lblNewLabel.setBounds(497, 40, 269, 49);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
