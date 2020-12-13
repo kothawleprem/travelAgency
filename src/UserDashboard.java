@@ -106,7 +106,7 @@ public class UserDashboard {
 		btnViewTours.setBounds(543, 260, 130, 34);
 		frame.getContentPane().add(btnViewTours);
 		
-		JLabel lblNewLabel = new JLabel("User"+username);
+		JLabel lblNewLabel = new JLabel("User-"+username);
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblNewLabel.setBounds(497, 40, 269, 49);

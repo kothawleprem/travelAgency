@@ -8,13 +8,14 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+//import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-
+//import javax.swing.JTextArea;
+//import javax.swing.JTextPane;
+//import java.util.*;
 public class TourInfo {
 
 	private JFrame frame;
@@ -48,6 +49,7 @@ public class TourInfo {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	//@SuppressWarnings("deprecation")
 	private void initialize(final String username,int id) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
@@ -55,28 +57,28 @@ public class TourInfo {
 		
 		JLabel lblNewLabel = new JLabel("Tour Info");
 		lblNewLabel.setForeground(new Color(255, 255, 0));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("T ahoma", Font.PLAIN, 32));
 		lblNewLabel.setBounds(294, 36, 192, 39);
 		frame.getContentPane().add(lblNewLabel);
-		
-		lblname = new JLabel("Name:");
-		lblname.setForeground(new Color(255, 255, 255));
-		lblname.setBackground(new Color(255, 255, 255));
+		 
+ 		lblname = new JLabel("Name:");
+ 		lblname.setForeground(new Color(255, 255, 255));
+ 		lblname.setBackground(new Color(255, 255, 255));
 		lblname.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblname.setBounds(107, 141, 86, 25);
 		frame.getContentPane().add(lblname);
 		
-		JLabel lblDetails = new JLabel("Details:");
-		lblDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblDetails.setForeground(new Color(255, 255, 255));
-		lblDetails.setBounds(107, 177, 98, 25);
-		frame.getContentPane().add(lblDetails);
+		JLabel lblDOJ = new JLabel("DOJ:");
+		lblDOJ.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblDOJ.setForeground(new Color(255, 255, 255));
+		lblDOJ.setBounds(107, 177, 98, 25);
+		frame.getContentPane().add(lblDOJ);
 		
-		JLabel lblprice = new JLabel("Price:");
-		lblprice.setForeground(new Color(255, 255, 255));
-		lblprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblprice.setBounds(107, 215, 62, 25);
-		frame.getContentPane().add(lblprice);
+		JLabel lbldetail = new JLabel("Details:");
+		lbldetail.setForeground(new Color(255, 255, 255));
+		lbldetail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbldetail.setBounds(107, 215, 86, 25);
+		frame.getContentPane().add(lbldetail);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setBackground(new Color(65, 105, 225));
@@ -84,16 +86,17 @@ public class TourInfo {
 		btnNewButton.setIcon(new ImageIcon(TourInfo.class.getResource("/images/confirm.png")));
 		btnNewButton.setBounds(188, 330, 154, 30);
 		frame.getContentPane().add(btnNewButton);
-		String name = "",price = "",details = "";
+		String name = "",details = "",doj="",price="";
 		try {
-			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 	         Statement selectStmt = connection.createStatement();
-			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_price,tour_details FROM tour WHERE tour_id = 1");
+			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price FROM tour WHERE tour_id like '%"+id+"%'");
 			 while(rs.next())
 	            {
 				  name = rs.getString(1);
-				  price = rs.getString(2);
-				  details = rs.getString(3);
+				  doj = rs.getString(2);
+				  price = rs.getString(3);
+				  details = rs.getString(4);
 	            }
 		
 		}catch(Exception e) {
@@ -132,17 +135,29 @@ public class TourInfo {
 		lbldynname.setBounds(203, 141, 300, 25);
 		frame.getContentPane().add(lbldynname);
 		
-		JLabel lbldynprice = new JLabel(""+price);
-		lbldynprice.setForeground(Color.YELLOW);
-		lbldynprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynprice.setBounds(203, 215, 300, 25);
-		frame.getContentPane().add(lbldynprice);
-		
 		JLabel lbldyndetails = new JLabel(""+details);
 		lbldyndetails.setForeground(Color.YELLOW);
 		lbldyndetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldyndetails.setBounds(203, 177, 300, 25);
+		lbldyndetails.setBounds(203, 215, 300, 25);
 		frame.getContentPane().add(lbldyndetails);
+		
+		JLabel lbldyndoj = new JLabel(""+doj.toString());
+		lbldyndoj.setForeground(Color.YELLOW);
+		lbldyndoj.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbldyndoj.setBounds(203, 177, 300, 25);
+		frame.getContentPane().add(lbldyndoj);
+		
+		JLabel lblprice_1 = new JLabel("Price:");
+		lblprice_1.setForeground(Color.WHITE);
+		lblprice_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblprice_1.setBounds(107, 256, 62, 25);
+		frame.getContentPane().add(lblprice_1);
+		
+		JLabel lbldynprice = new JLabel(""+price);
+		lbldynprice.setForeground(Color.YELLOW);
+		lbldynprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lbldynprice.setBounds(203, 256, 300, 25);
+		frame.getContentPane().add(lbldynprice);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

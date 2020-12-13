@@ -15,6 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import java.sql.*;
+
 import javax.swing.JPasswordField;
 
 
@@ -125,16 +128,18 @@ public class RegisterPage {
                 String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "','" + password +  "','" + city +"','" + phone + "')";
             
                 try {
-                	Conn c = new Conn();
-                	c.s.executeUpdate(query);
-            		JOptionPane.showMessageDialog(null, "Account Created Successfully");
-            		UserDashboard userdb = new UserDashboard(username);
-     				userdb.NewScreen(username);
-     				frame.dispose();
-                	
+                	Class.forName("org.postgresql.Driver");
+					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+					Statement stmt = con.createStatement();
+				    stmt.executeUpdate(query);
+					JOptionPane.showMessageDialog(null, "Account Created Successfully");
+	            	UserDashboard userdb = new UserDashboard(username);
+	     			userdb.NewScreen(username);
+	     			frame.dispose();
+				
                 }
                 catch(Exception exp){
-                    System.out.println(exp);
+                    System.out.println("Enter Valid details.");
             }
                 
                 

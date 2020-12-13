@@ -3,12 +3,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
@@ -71,11 +76,36 @@ public class AdminLoginPage {
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminDashboard admindb = new AdminDashboard();
-				admindb.NewScreen();
-				frame.dispose();
+				String username = " ";
+				username=textField.getText();
+	            @SuppressWarnings("deprecation")
+				String pass = passwordField.getText();
+				try {
+					Class.forName("org.postgresql.Driver");
+					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+					Statement stmt = con.createStatement();
+					String query = "Select * from admin where admin_username like '"+username+"%' AND admin_password like '"+pass+"%'";
+
+					ResultSet rs = stmt.executeQuery(query);
+					if(rs.next())
+					{
+						AdminDashboard admindb = new AdminDashboard(username);
+						admindb.NewScreen(username);
+						frame.dispose();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Invalid Login");
+					}
+					con.close();
+				}catch (Exception exp) {
+					System.out.println(exp);
+				}
+				
 						
 			}
+				
+						
+			
 		});
 		btnNewButton.setBounds(116, 223, 150, 35);
 		frame.getContentPane().add(btnNewButton);

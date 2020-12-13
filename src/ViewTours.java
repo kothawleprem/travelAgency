@@ -59,7 +59,7 @@ public class ViewTours {
 		JPanel panel_3 = new JPanel();
 	//	panel_3.setViewportView(panel_3);
 		panel_3.setBackground(Color.YELLOW);
-		panel_3.setBounds(150, 25, 640, 800);
+		panel_3.setBounds(150, 25, 640, 400);
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		frame.getContentPane().add(panel_3);
@@ -77,16 +77,31 @@ public class ViewTours {
 		panel_3.add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				TourInfo tourin = new TourInfo(username,2);
+				tourin.NewScreen(username,2);
+				frame.dispose();
+			}
+		});
 		label.setIcon(new ImageIcon(ViewTours.class.getResource("/images/maldives.jpg")));
 		label.setBounds(230, 202, 179, 180);
 		panel_3.add(label);
 		
 		JLabel label_2 = new JLabel("");
+		
 		label_2.setIcon(new ImageIcon(ViewTours.class.getResource("/images/figma.jpg")));
 		label_2.setBounds(440, 11, 179, 180);
 		panel_3.add(label_2);
 		
 		JLabel label_1 = new JLabel("");
+		label_1.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				TourInfo tourin = new TourInfo(username,3);
+				tourin.NewScreen(username,3);
+				frame.dispose();
+			}
+		});
 		label_1.setIcon(new ImageIcon(ViewTours.class.getResource("/images/goa.png")));
 		label_1.setBounds(230, 11, 179, 180);
 		panel_3.add(label_1);
@@ -100,11 +115,6 @@ public class ViewTours {
 		label_4.setIcon(new ImageIcon(ViewTours.class.getResource("/images/leh.png")));
 		label_4.setBounds(440, 202, 179, 180);
 		panel_3.add(label_4);
-		
-		JLabel label0 = new JLabel("");
-		label0.setIcon(new ImageIcon(ViewTours.class.getResource("/images/maldives.jpg")));
-		label0.setBounds(230, 402, 179, 180);
-		panel_3.add(label0);
 		
 		
 		

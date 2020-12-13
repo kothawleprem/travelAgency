@@ -97,11 +97,10 @@ public class UpdateMyInformation {
 		frame.getContentPane().add(lblPhoneNumber);
 		String name = "",email="",phone="",city="";
 		try {
-			Conn c = new Conn();
-		
-			String sql = "SELECT customer_name,customer_phone,customer_email,customer_city FROM customer WHERE customer_username like '%"+username+"%'";
-		    ResultSet rs = c.s.executeQuery(sql);
-		    while(rs.next())
+			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+            Statement selectStmt = connection.createStatement();
+            ResultSet rs = selectStmt.executeQuery("SELECT customer_name,customer_phone,customer_email,customer_city FROM customer WHERE customer_username like '%"+username+"%'");
+            while(rs.next())
             {
                 name = rs.getString(1);    //First Column
                 phone = rs.getString(2);    //Second Column
@@ -109,7 +108,7 @@ public class UpdateMyInformation {
                 city = rs.getString(4);
       //Fourth Column
             }
-		    		
+		
 		}catch(Exception exp) {
 			
 		}
@@ -154,7 +153,7 @@ public class UpdateMyInformation {
 		btnUpdate.setIcon(new ImageIcon(UpdateMyInformation.class.getResource("/images/Update_button.png")));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Conn c = new Conn();
+				
 				try {
 					String s1 = textName.getText();
 					String s2 = textEmail.getText();
@@ -165,9 +164,12 @@ public class UpdateMyInformation {
 				//	c.s.executeUpdate(q1);
 				//	String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "',
 				//	+'" + password +"','" + city +"','" + phone + "')";
-					 String query = "update customer set customer_name = '"+s1+"',customer_email = '"+s2+"', customer_phone = '"+s3+"',customer_city = '"+s4+"' where customer_username like '"+username+"%'";
-					 c.s.executeUpdate(query);
-					 JOptionPane.showMessageDialog(null, "Customer Detail Updated Successfully");
+					String query = "update customer set customer_name = '"+s1+"',customer_email = '"+s2+"', customer_phone = '"+s3+"',customer_city = '"+s4+"' where customer_username like '"+username+"%'";
+					Class.forName("org.postgresql.Driver");
+					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+					Statement stmt = con.createStatement();
+					stmt.executeUpdate(query);
+					JOptionPane.showMessageDialog(null, "Customer Detail Updated Successfully");
 				
 				}catch(Exception exp) {
 					System.out.println(exp);

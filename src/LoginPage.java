@@ -85,13 +85,15 @@ public class LoginPage {
 			public void actionPerformed(ActionEvent e) {
 				String username = " ";
 				username=textField.getText();
-	            String pass = passwordField.getText();
+	            @SuppressWarnings("deprecation")
+				String pass = passwordField.getText();
 				try {
+					Class.forName("org.postgresql.Driver");
+					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+					Statement stmt = con.createStatement();
 					String query = "Select * from customer where customer_username like '"+username+"%' AND customer_password like '"+pass+"%'";
 
-					//String query = "Select * from customer where customer_username like %'"+uname+"'% and customer_password like %'"+pass+"'%";
-					Conn c = new Conn();
-					ResultSet rs = c.s.executeQuery(query);
+					ResultSet rs = stmt.executeQuery(query);
 					if(rs.next())
 					{
 						UserDashboard userdb = new UserDashboard(username);
@@ -101,6 +103,7 @@ public class LoginPage {
 					else {
 						JOptionPane.showMessageDialog(null, "Invalid Login");
 					}
+					con.close();
 				}catch (Exception exp) {
 					System.out.println(exp);
 				}

@@ -18,11 +18,12 @@ public class AdminDashboard {
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(String uname) {
+		final String username = uname;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminDashboard window = new AdminDashboard();
+					AdminDashboard window = new AdminDashboard(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,14 +35,14 @@ public class AdminDashboard {
 	/**
 	 * Create the application.
 	 */
-	public AdminDashboard() {
-		initialize();
+	public AdminDashboard(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -83,8 +84,8 @@ public class AdminDashboard {
 		button_1.setIcon(new ImageIcon(AdminDashboard.class.getResource("/images/addtour35.png")));
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminAddTours addTours = new AdminAddTours();
-				addTours.NewScreen();
+				AdminAddTours addTours = new AdminAddTours(username);
+				addTours.NewScreen(username);
 				frame.dispose();
 			}
 		});
@@ -113,8 +114,8 @@ public class AdminDashboard {
 		button_3.setIcon(new ImageIcon(AdminDashboard.class.getResource("/images/viewt35.png")));
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewTours view = new ViewTours();
-				view.NewScreen();
+				ViewTours view = new ViewTours(username);
+				view.NewScreen(username);
 				frame.dispose();
 			}
 		});

@@ -51,7 +51,7 @@ public class MyInformation {
 		frame.getContentPane().setLayout(null);
 		
 		try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
             Statement selectStmt = connection.createStatement();
             ResultSet rs = selectStmt.executeQuery("SELECT customer_name,customer_phone,customer_email,customer_city FROM customer WHERE customer_username like '%"+username+"%'");
             while(rs.next())
