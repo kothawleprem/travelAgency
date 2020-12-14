@@ -110,7 +110,7 @@ public class UpdateMyInformation {
             }
 		
 		}catch(Exception exp) {
-			
+			System.out.println(exp);
 		}
 		
 		textName = new JTextField();

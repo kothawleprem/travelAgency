@@ -13,6 +13,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
 
@@ -47,13 +52,45 @@ public class ViewTours {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	String connect(int id) {
+		String details = "";
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println("Got ID"+id);
+			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+			Statement selectStmt = con.createStatement();
+			ResultSet rs = selectStmt.executeQuery("select tour_details from tour where tour_id = '0"+id+"'");
+			while(rs.next())
+            {
+				details = rs.getString(1);
+            }
+			
+		}catch(Exception e) {
+			System.out.println(e);
+			
+		}
+		return details;
+	}
+	
 	private void initialize(final String username) {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
-		
-		
+		String details = "";
+		try {
+			Class.forName("org.postgresql.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+			Statement selectStmt = con.createStatement();
+			ResultSet rs = selectStmt.executeQuery("select tour_details from tour where tour_id = '07'");
+			while(rs.next())
+            {
+				details = rs.getString(1);
+            }
+			System.out.println("Hello"+details);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	//	JScrollPane jp = new JScrollPane();
 		
 		JPanel panel_3 = new JPanel();
@@ -107,12 +144,14 @@ public class ViewTours {
 		panel_3.add(label_1);
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(ViewTours.class.getResource("/images/kerala.png")));
+		label_3.setIcon(new ImageIcon(ViewTours.class.getResource("images/kerala.png")));
 		label_3.setBounds(20, 202, 179, 180);
 		panel_3.add(label_3);
 		
+		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(ViewTours.class.getResource("/images/leh.png")));
+		String detail6 = connect(06);
+		label_4.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail6)));
 		label_4.setBounds(440, 202, 179, 180);
 		panel_3.add(label_4);
 		
@@ -183,4 +222,7 @@ public class ViewTours {
 		//JScrollPane scroll = new JScrollPane(frame,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	
 }
+

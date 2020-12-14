@@ -69,8 +69,8 @@ public class AdminDashboard {
 		button.setIcon(new ImageIcon(AdminDashboard.class.getResource("/images/viewb.png")));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminViewBookings advbook = new AdminViewBookings();
-				advbook.NewScreen();
+				AdminViewBookings advbook = new AdminViewBookings(username);
+				advbook.NewScreen(username);
 				frame.dispose();
 			}
 		});

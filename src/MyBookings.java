@@ -71,8 +71,8 @@ public class MyBookings {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserDashboard userdb = new UserDashboard();
-				userdb.NewScreen();
+				UserDashboard userdb = new UserDashboard(username);
+				userdb.NewScreen(username);
 				frame.dispose();
 			}
 		});

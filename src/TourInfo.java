@@ -50,7 +50,7 @@ public class TourInfo {
 	 * Initialize the contents of the frame.
 	 */
 	//@SuppressWarnings("deprecation")
-	private void initialize(final String username,int id) {
+	private void initialize(final String username,final int id) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -81,6 +81,13 @@ public class TourInfo {
 		frame.getContentPane().add(lbldetail);
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserBookingConfirmation bookconf = new UserBookingConfirmation(username,id);
+				bookconf.NewScreen(username,id);
+				frame.dispose();
+			}
+		});
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setIcon(new ImageIcon(TourInfo.class.getResource("/images/confirm.png")));
@@ -141,7 +148,7 @@ public class TourInfo {
 		lbldyndetails.setBounds(203, 215, 300, 25);
 		frame.getContentPane().add(lbldyndetails);
 		
-		JLabel lbldyndoj = new JLabel(""+doj.toString());
+		JLabel lbldyndoj = new JLabel(""+doj);
 		lbldyndoj.setForeground(Color.YELLOW);
 		lbldyndoj.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lbldyndoj.setBounds(203, 177, 300, 25);

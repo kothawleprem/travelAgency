@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class AdminViewBookings {
 
@@ -17,11 +18,11 @@ public class AdminViewBookings {
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(final String username) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminViewBookings window = new AdminViewBookings();
+					AdminViewBookings window = new AdminViewBookings(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,14 +34,14 @@ public class AdminViewBookings {
 	/**
 	 * Create the application.
 	 */
-	public AdminViewBookings() {
-		initialize();
+	public AdminViewBookings(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -51,17 +52,20 @@ public class AdminViewBookings {
 		lblViewBookings.setBounds(296, 8, 227, 49);
 		frame.getContentPane().add(lblViewBookings);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(28, 68, 750, 321);
+		frame.getContentPane().add(scrollPane);
+		
 		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(28, 68, 750, 321);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminDashboard admindb = new AdminDashboard();
-				admindb.NewScreen();
+				AdminDashboard admindb = new AdminDashboard(username);
+				admindb.NewScreen(username);
 				frame.dispose();
 			}
 		});

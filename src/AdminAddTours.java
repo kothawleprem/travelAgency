@@ -6,10 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -103,13 +107,36 @@ public class AdminAddTours {
 		
 		textFieldDetails = new JTextField();
 		textFieldDetails.setColumns(10);
-		textFieldDetails.setBounds(223, 232, 244, 19);
+		textFieldDetails.setBounds(316, 232, 151, 19);
 		frame.getContentPane().add(textFieldDetails);
 		
 		textFieldPrice = new JTextField();
 		textFieldPrice.setColumns(10);
 		textFieldPrice.setBounds(223, 276, 244, 19);
 		frame.getContentPane().add(textFieldPrice);
+		
+		JLabel lbl_image = new JLabel("");
+		lbl_image.setBounds(555, 116, 179, 180);
+		frame.getContentPane().add(lbl_image);
+		
+		JButton btnNewButton = new JButton("Attach");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File f = chooser.getSelectedFile();
+				String filename = f.getAbsolutePath();
+				int index = filename.indexOf("src");
+				String newFilename = filename.substring(index+4);
+				textFieldDetails.setText(newFilename.replace("\\", "/"));
+			//	String tour_details = textFieldDetails.getText();
+
+				Image getAbsolutePath = null;
+				ImageIcon icon = new ImageIcon(newFilename);
+				Image image = icon.getImage().getScaledInstance(179, 180, Image.SCALE_SMOOTH);
+			}
+		});
+		btnNewButton.setBounds(217, 230, 89, 23);
 		
 		JButton btnAddTour = new JButton("");
 		btnAddTour.addActionListener(new ActionListener() {
@@ -119,7 +146,8 @@ public class AdminAddTours {
 				String tour_doj = textFieldDoj.getText();
 				String tour_details = textFieldDetails.getText();
 				String tour_price = textFieldPrice.getText();
-				  
+				
+				
 				 try {
 	                	Class.forName("org.postgresql.Driver");
 						Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
@@ -143,6 +171,11 @@ public class AdminAddTours {
 		btnAddTour.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/addtour35.png")));
 		btnAddTour.setBounds(177, 355, 130, 35);
 		frame.getContentPane().add(btnAddTour);
+		
+	
+		frame.getContentPane().add(btnNewButton);
+		
+		
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
