@@ -3,6 +3,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -55,6 +57,23 @@ public class TourInfo {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
+		String name = "",details = "",doj="",price="";
+		try {
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	         Statement selectStmt = connection.createStatement();
+			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price FROM tour WHERE tour_id like '%"+id+"%'");
+			 while(rs.next())
+	            {
+				  name = rs.getString(1);
+				  doj = rs.getString(2);
+				  price = rs.getString(4);
+				  details = rs.getString(3);
+	            }
+		
+		}catch(Exception e) {
+		System.out.println(e);	
+		}
+		
 		JLabel lblNewLabel = new JLabel("Tour Info");
 		lblNewLabel.setForeground(new Color(255, 255, 0));
 		lblNewLabel.setFont(new Font("T ahoma", Font.PLAIN, 32));
@@ -80,35 +99,32 @@ public class TourInfo {
 		lbldetail.setBounds(107, 215, 86, 25);
 		frame.getContentPane().add(lbldetail);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				UserBookingConfirmation bookconf = new UserBookingConfirmation(username,id);
-				bookconf.NewScreen(username,id);
-				frame.dispose();
-			}
-		});
+		final JButton btnNewButton = new JButton("");
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setIcon(new ImageIcon(TourInfo.class.getResource("/images/confirm.png")));
 		btnNewButton.setBounds(188, 330, 154, 30);
 		frame.getContentPane().add(btnNewButton);
-		String name = "",details = "",doj="",price="";
-		try {
-			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-	         Statement selectStmt = connection.createStatement();
-			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price FROM tour WHERE tour_id like '%"+id+"%'");
-			 while(rs.next())
-	            {
-				  name = rs.getString(1);
-				  doj = rs.getString(2);
-				  price = rs.getString(3);
-				  details = rs.getString(4);
-	            }
-		
-		}catch(Exception e) {
-		System.out.println(e);	
-		}
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(username.length()==0)
+				{
+					JOptionPane.showMessageDialog(btnNewButton, "Not logged in");
+					
+				}
+				else if(username.contains("admin"))
+				{
+					JOptionPane.showMessageDialog(btnNewButton, "You are an Admin!");
+				}
+				else
+				{
+					UserBookingConfirmation bookconf = new UserBookingConfirmation(username,id);
+					bookconf.NewScreen(username,id);
+					frame.dispose();
+				}
+				
+			}
+		});
 		
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {

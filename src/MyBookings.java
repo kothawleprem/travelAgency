@@ -5,26 +5,33 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class MyBookings {
 
 	private JFrame frame;
 	private JTable table;
-
+	
 	/**
 	 * Launch the application.
 	 */
-	public void NewScreen() {
+	public void NewScreen(final String username) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyBookings window = new MyBookings();
+					MyBookings window = new MyBookings(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,14 +43,14 @@ public class MyBookings {
 	/**
 	 * Create the application.
 	 */
-	public MyBookings() {
-		initialize();
+	public MyBookings(String username) {
+		initialize(username);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
@@ -58,15 +65,27 @@ public class MyBookings {
 		scrollPane.setBounds(95, 364, 409, -251);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setBackground(Color.WHITE);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(27, 67, 751, 303);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(10, 44, 731, 248);
+		panel.add(table);
+		
+		try {
+			String query = "select booking_id,customer_username,tour_name,tour_doj,tour_details from tour t join booking b on t.tour_id = b.tour_id where customer_username like '%"+username+"%' ;";
+			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+            PreparedStatement pst = connection.prepareStatement(query) ;
+            ResultSet rs = pst.executeQuery();
+            table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {

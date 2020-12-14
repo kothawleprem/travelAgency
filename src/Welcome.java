@@ -52,6 +52,8 @@ public class Welcome {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+	//	String username="";
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 365, 420);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.LIGHT_GRAY, Color.BLACK, null));

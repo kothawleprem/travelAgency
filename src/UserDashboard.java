@@ -53,8 +53,8 @@ public class UserDashboard {
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MyBookings mybook = new MyBookings();
-				mybook.NewScreen();
+				MyBookings mybook = new MyBookings(username);
+				mybook.NewScreen(username);
 				frame.dispose();
 			}
 		});

@@ -27,6 +27,7 @@ public class AdminAddTours {
 	private JTextField textFieldDoj;
 	private JTextField textFieldDetails;
 	private JTextField textFieldPrice;
+	private JTextField textFieldImage;
 
 	/**
 	 * Launch the application.
@@ -107,7 +108,7 @@ public class AdminAddTours {
 		
 		textFieldDetails = new JTextField();
 		textFieldDetails.setColumns(10);
-		textFieldDetails.setBounds(316, 232, 151, 19);
+		textFieldDetails.setBounds(223, 232, 244, 19);
 		frame.getContentPane().add(textFieldDetails);
 		
 		textFieldPrice = new JTextField();
@@ -119,6 +120,16 @@ public class AdminAddTours {
 		lbl_image.setBounds(555, 116, 179, 180);
 		frame.getContentPane().add(lbl_image);
 		
+		textFieldImage = new JTextField();
+		textFieldImage.setBounds(322, 318, 145, 20);
+		frame.getContentPane().add(textFieldImage);
+		textFieldImage.setColumns(10);
+		
+		JLabel lblImage = new JLabel("Image");
+		lblImage.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblImage.setBounds(70, 307, 81, 30);
+		frame.getContentPane().add(lblImage);
+		
 		JButton btnNewButton = new JButton("Attach");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,16 +138,16 @@ public class AdminAddTours {
 				File f = chooser.getSelectedFile();
 				String filename = f.getAbsolutePath();
 				int index = filename.indexOf("src");
-				String newFilename = filename.substring(index+4);
-				textFieldDetails.setText(newFilename.replace("\\", "/"));
-			//	String tour_details = textFieldDetails.getText();
+				String newFilename = filename.substring(index+3);
+				textFieldImage.setText(newFilename.replace("\\", "/"));
+			
 
 				Image getAbsolutePath = null;
 				ImageIcon icon = new ImageIcon(newFilename);
 				Image image = icon.getImage().getScaledInstance(179, 180, Image.SCALE_SMOOTH);
 			}
 		});
-		btnNewButton.setBounds(217, 230, 89, 23);
+		btnNewButton.setBounds(223, 317, 89, 23);
 		
 		JButton btnAddTour = new JButton("");
 		btnAddTour.addActionListener(new ActionListener() {
@@ -146,12 +157,15 @@ public class AdminAddTours {
 				String tour_doj = textFieldDoj.getText();
 				String tour_details = textFieldDetails.getText();
 				String tour_price = textFieldPrice.getText();
+				String tour_image = textFieldImage.getText();
 				
 				
 				 try {
 	                	Class.forName("org.postgresql.Driver");
+	                //	System.out.println("ID"+tour_id);
 						Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-						String query = "insert into tour values('" + tour_id + "','" + tour_name + "','" + tour_doj + "','" + tour_details +  "','" + tour_price +"')";
+						String query = "update tour set tour_name = '"+tour_name+"' , tour_doj = '"+tour_doj+"' , tour_details = '"+tour_details+"' , tour_price = '"+tour_price+"' , tour_image = '"+tour_image+"' where tour_id like '%"+tour_id+"%'";
+								
 						Statement stmt = con.createStatement();
 					    stmt.executeUpdate(query);
 						JOptionPane.showMessageDialog(null, "Tour Added Successfully");
@@ -161,7 +175,7 @@ public class AdminAddTours {
 					
 	                }
 	                catch(Exception exp){
-	                    System.out.println("Enter Valid details.");
+	                    System.out.println(exp);
 	            }
 			}
 		});
@@ -169,11 +183,20 @@ public class AdminAddTours {
 		btnAddTour.setBorderPainted(false);
 		btnAddTour.setForeground(Color.BLACK);
 		btnAddTour.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/addtour35.png")));
-		btnAddTour.setBounds(177, 355, 130, 35);
+		btnAddTour.setBounds(146, 355, 130, 35);
 		frame.getContentPane().add(btnAddTour);
 		
 	
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewBack = new JButton("");
+		btnNewBack.setBorderPainted(false);
+		btnNewBack.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/back.png")));
+		btnNewBack.setBackground(new Color(65, 105, 225));
+		btnNewBack.setBounds(332, 355, 145, 35);
+		frame.getContentPane().add(btnNewBack);
+		
+		
 		
 		
 		frame.setBounds(100, 100, 820, 480);

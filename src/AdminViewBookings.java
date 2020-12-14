@@ -8,12 +8,22 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import net.proteanit.sql.DbUtils;
 
 public class AdminViewBookings {
 
 	private JFrame frame;
+	private JTable table;
+	//private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -46,6 +56,7 @@ public class AdminViewBookings {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
+		
 		JLabel lblViewBookings = new JLabel("View Bookings");
 		lblViewBookings.setForeground(Color.YELLOW);
 		lblViewBookings.setFont(new Font("Tahoma", Font.PLAIN, 32));
@@ -60,6 +71,41 @@ public class AdminViewBookings {
 		scrollPane.setViewportView(panel);
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setLayout(null);
+		
+		table = new JTable();
+		table.setBounds(10, 55, 728, 253);
+		panel.add(table);
+		
+		try {
+			String query = "select booking_id,customer_name,customer_phone,tour_name from customer c inner join booking b on c.customer_username = b.customer_username inner join tour t on b.tour_id = t.tour_id;";
+			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+            PreparedStatement pst = connection.prepareStatement(query) ;
+            ResultSet rs = pst.executeQuery();
+            table.setModel(DbUtils.resultSetToTableModel(rs));
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+            
+            JLabel lblNewLabel = new JLabel("Booking ID");
+            lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+            lblNewLabel.setBounds(49, 24, 88, 20);
+            panel.add(lblNewLabel);
+            
+            JLabel lblCustomerName = new JLabel("Customer Name");
+            lblCustomerName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+            lblCustomerName.setBounds(217, 24, 117, 20);
+            panel.add(lblCustomerName);
+            
+            JLabel lblNewLabel_1_1 = new JLabel("Tour Name");
+            lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+            lblNewLabel_1_1.setBounds(609, 24, 88, 20);
+            panel.add(lblNewLabel_1_1);
+            
+            JLabel lblCustomerPhone = new JLabel("Customer Phone");
+            lblCustomerPhone.setFont(new Font("Tahoma", Font.PLAIN, 15));
+            lblCustomerPhone.setBounds(410, 24, 117, 20);
+            panel.add(lblCustomerPhone);
+	
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {

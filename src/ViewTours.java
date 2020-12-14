@@ -56,10 +56,10 @@ public class ViewTours {
 		String details = "";
 		try {
 			Class.forName("org.postgresql.Driver");
-			System.out.println("Got ID"+id);
+			//System.out.println("Got ID"+id);
 			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 			Statement selectStmt = con.createStatement();
-			ResultSet rs = selectStmt.executeQuery("select tour_details from tour where tour_id = '0"+id+"'");
+			ResultSet rs = selectStmt.executeQuery("select tour_image from tour where tour_id = '"+id+"'");
 			while(rs.next())
             {
 				details = rs.getString(1);
@@ -70,7 +70,7 @@ public class ViewTours {
 			
 		}
 		return details;
-	}
+	} 
 	
 	private void initialize(final String username) {
 		
@@ -87,7 +87,7 @@ public class ViewTours {
             {
 				details = rs.getString(1);
             }
-			System.out.println("Hello"+details);
+			//System.out.println("Hello"+details);
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -101,19 +101,23 @@ public class ViewTours {
 		panel_3.setLayout(null);
 		frame.getContentPane().add(panel_3);
 		
-		JLabel lblNewLabel = new JLabel("=");
-		lblNewLabel.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_2 = new JLabel("");
+		String detail1 = connect(1);
+		lblNewLabel_2.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail1)));
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,1);
 				tourin.NewScreen(username,1);
 				frame.dispose();
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(ViewTours.class.getResource("/images/hongkong.jpg")));
-		lblNewLabel.setBounds(20, 11, 179, 180);
-		panel_3.add(lblNewLabel);
+		lblNewLabel_2.setBounds(20, 11, 179, 180);
+		panel_3.add(lblNewLabel_2);
 		
+	
 		JLabel label = new JLabel("");
+		String detail2 = connect(2);
+		label.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail2)));
 		label.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,2);
@@ -121,17 +125,12 @@ public class ViewTours {
 				frame.dispose();
 			}
 		});
-		label.setIcon(new ImageIcon(ViewTours.class.getResource("/images/maldives.jpg")));
 		label.setBounds(230, 202, 179, 180);
 		panel_3.add(label);
 		
-		JLabel label_2 = new JLabel("");
-		
-		label_2.setIcon(new ImageIcon(ViewTours.class.getResource("/images/figma.jpg")));
-		label_2.setBounds(440, 11, 179, 180);
-		panel_3.add(label_2);
-		
 		JLabel label_1 = new JLabel("");
+		String detail3 = connect(3);
+		label_1.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail3)));
 		label_1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,3);
@@ -139,24 +138,48 @@ public class ViewTours {
 				frame.dispose();
 			}
 		});
-		label_1.setIcon(new ImageIcon(ViewTours.class.getResource("/images/goa.png")));
 		label_1.setBounds(230, 11, 179, 180);
 		panel_3.add(label_1);
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(ViewTours.class.getResource("images/kerala.png")));
+		String detail4 = connect(4);
+		label_3.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail4)));
+		label_3.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				TourInfo tourin = new TourInfo(username,4);
+				tourin.NewScreen(username,4);
+				frame.dispose();
+			}
+		});
 		label_3.setBounds(20, 202, 179, 180);
 		panel_3.add(label_3);
 		
+		JLabel label_2 = new JLabel("");
+		String detail5 = connect(5);
+		label_2.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail5)));
+		label_2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				TourInfo tourin = new TourInfo(username,5);
+				tourin.NewScreen(username,5);
+				frame.dispose();
+			}
+		});
+		label_2.setBounds(440, 11, 179, 180);
+		panel_3.add(label_2);
+		
 		
 		JLabel label_4 = new JLabel("");
-		String detail6 = connect(06);
+		String detail6 = connect(6);
 		label_4.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail6)));
+		label_4.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				TourInfo tourin = new TourInfo(username,6);
+				tourin.NewScreen(username,6);
+				frame.dispose();
+			}
+		});
 		label_4.setBounds(440, 202, 179, 180);
 		panel_3.add(label_4);
-		
-		
-		
 		
 		
 		final JButton btnNewButton = new JButton("");
@@ -200,6 +223,13 @@ public class ViewTours {
 					JOptionPane.showMessageDialog(btnNewButton, "Not logged in");
 					
 				}
+				else if(username.contains("admin"))
+					{
+
+					AdminDashboard admindb = new AdminDashboard(username);
+					admindb.NewScreen(username);
+					frame.dispose();
+                  }
 				else
 				{
 					UserDashboard userdb = new UserDashboard(username);

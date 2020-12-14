@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class UserBookingConfirmation {
 
@@ -174,6 +175,21 @@ public class UserBookingConfirmation {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(257, 370, 156, 42);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TourInfo tourin = new TourInfo(username,id);
+				tourin.NewScreen(username,id);
+				frame.dispose();
+			}
+		});
+		btnBack.setBackground(new Color(65, 105, 225));
+		btnBack.setBorderPainted(false);
+		btnBack.setIcon(new ImageIcon(UserBookingConfirmation.class.getResource("/images/back.png")));
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnBack.setBounds(473, 370, 156, 42);
+		frame.getContentPane().add(btnBack);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
