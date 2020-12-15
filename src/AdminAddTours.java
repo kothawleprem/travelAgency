@@ -16,8 +16,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class AdminAddTours {
 
@@ -58,12 +62,26 @@ public class AdminAddTours {
 	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Add Tours - "+username);
 		frame.getContentPane().setLayout(null);
+		String tour_id_1 ="", tour_id_2 ="",tour_id_3 ="",tour_id_4 ="",tour_id_5 ="",tour_id_6 ="";
+		try {
+			String query = "Select tour_name from tour where tour_id = '1'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_1 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 		
 		JLabel lblNewLabel = new JLabel("Add Tours");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblNewLabel.setBounds(299, 23, 168, 58);
+		lblNewLabel.setBounds(186, 25, 168, 58);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblName = new JLabel("Name");
@@ -87,6 +105,7 @@ public class AdminAddTours {
 		frame.getContentPane().add(lblPrice);
 		
 		JLabel lblDetails = new JLabel("Details");
+		lblDetails.setBackground(new Color(65, 105, 225));
 		lblDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblDetails.setBounds(70, 222, 81, 30);
 		frame.getContentPane().add(lblDetails);
@@ -116,12 +135,8 @@ public class AdminAddTours {
 		textFieldPrice.setBounds(223, 276, 244, 19);
 		frame.getContentPane().add(textFieldPrice);
 		
-		JLabel lbl_image = new JLabel("");
-		lbl_image.setBounds(555, 116, 179, 180);
-		frame.getContentPane().add(lbl_image);
-		
 		textFieldImage = new JTextField();
-		textFieldImage.setBounds(322, 318, 145, 20);
+		textFieldImage.setBounds(343, 318, 124, 20);
 		frame.getContentPane().add(textFieldImage);
 		textFieldImage.setColumns(10);
 		
@@ -130,7 +145,11 @@ public class AdminAddTours {
 		lblImage.setBounds(70, 307, 81, 30);
 		frame.getContentPane().add(lblImage);
 		
-		JButton btnNewButton = new JButton("Attach");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBorderPainted(false);
+
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/attachbtn.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
@@ -147,9 +166,178 @@ public class AdminAddTours {
 				Image image = icon.getImage().getScaledInstance(179, 180, Image.SCALE_SMOOTH);
 			}
 		});
-		btnNewButton.setBounds(223, 317, 89, 23);
+		btnNewButton.setBounds(210, 310, 130, 38);
 		
+		
+	
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewBack = new JButton("");
+		btnNewBack.setBorderPainted(false);
+		btnNewBack.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/back.png")));
+		btnNewBack.setBackground(new Color(65, 105, 225));
+		btnNewBack.setBounds(332, 372, 145, 35);
+		frame.getContentPane().add(btnNewBack);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 0));
+		panel.setBounds(511, 42, 283, 388);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Current Tours");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_1.setBounds(88, 11, 160, 14);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("ID");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2.setBounds(32, 51, 46, 14);
+		panel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Tour Name");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_3.setBounds(76, 48, 90, 21);
+		panel.add(lblNewLabel_3);
+		
+		Component verticalStrut = Box.createVerticalStrut(20);
+		verticalStrut.setBounds(59, 45, 7, 316);
+		panel.add(verticalStrut);
+		
+		JLabel lblNewLabel_4 = new JLabel("1");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4.setBounds(32, 76, 26, 14);
+		panel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("2");
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_1.setBounds(32, 101, 26, 14);
+		panel.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("3");
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_2.setBounds(32, 126, 26, 14);
+		panel.add(lblNewLabel_4_2);
+		
+		JLabel lblNewLabel_4_3 = new JLabel("4");
+		lblNewLabel_4_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_3.setBounds(32, 151, 26, 14);
+		panel.add(lblNewLabel_4_3);
+		
+		JLabel lblNewLabel_4_4 = new JLabel("5");
+		lblNewLabel_4_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_4.setBounds(32, 176, 26, 14);
+		panel.add(lblNewLabel_4_4);
+		
+		JLabel lblNewLabel_4_5 = new JLabel("6");
+		lblNewLabel_4_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5.setBounds(32, 201, 26, 14);
+		panel.add(lblNewLabel_4_5);
+		
+		JLabel lblNewLabel_5 = new JLabel(""+tour_id_1);
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5.setBounds(75, 76, 198, 16);
+		panel.add(lblNewLabel_5);
+		try {
+			String query = "Select tour_name from tour where tour_id = '2'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_2 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_1 = new JLabel(""+tour_id_2);
+		lblNewLabel_5_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_1.setBounds(75, 101, 198, 16);
+		panel.add(lblNewLabel_5_1);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '3'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_3 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_2 = new JLabel(""+tour_id_3);
+		lblNewLabel_5_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_2.setBounds(75, 128, 198, 16);
+		panel.add(lblNewLabel_5_2);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '4'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_4 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_3 = new JLabel(""+tour_id_4);
+		lblNewLabel_5_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_3.setBounds(76, 153, 198, 16);
+		panel.add(lblNewLabel_5_3);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '5'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_5 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_4 = new JLabel(""+tour_id_5);
+		lblNewLabel_5_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_4.setBounds(76, 178, 198, 16);
+		panel.add(lblNewLabel_5_4);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '6'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_6 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		JLabel lblNewLabel_5_5 = new JLabel(""+tour_id_6);
+		lblNewLabel_5_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5.setBounds(75, 203, 198, 16);
+		panel.add(lblNewLabel_5_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("* TourName indicates no Tour is Currently added!!");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_6.setBounds(0, 363, 296, 14);
+		panel.add(lblNewLabel_6);
+		
+
 		JButton btnAddTour = new JButton("");
+		btnAddTour.setBorderPainted(false);
+
 		btnAddTour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String tour_id = textFieldId.getText();
@@ -183,20 +371,8 @@ public class AdminAddTours {
 		btnAddTour.setBorderPainted(false);
 		btnAddTour.setForeground(Color.BLACK);
 		btnAddTour.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/addtour35.png")));
-		btnAddTour.setBounds(146, 355, 130, 35);
+		btnAddTour.setBounds(145, 372, 130, 35);
 		frame.getContentPane().add(btnAddTour);
-		
-	
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewBack = new JButton("");
-		btnNewBack.setBorderPainted(false);
-		btnNewBack.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/back.png")));
-		btnNewBack.setBackground(new Color(65, 105, 225));
-		btnNewBack.setBounds(332, 355, 145, 35);
-		frame.getContentPane().add(btnNewBack);
-		
-		
 		
 		
 		frame.setBounds(100, 100, 820, 480);

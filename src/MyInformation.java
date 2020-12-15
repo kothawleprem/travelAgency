@@ -46,6 +46,7 @@ public class MyInformation {
 	private void initialize(final String username) {
 		String name = "",email="",phone="",city="";    
 		frame = new JFrame();
+		frame.setTitle("My Information - "+username);
 		
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);

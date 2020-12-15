@@ -76,6 +76,7 @@ public class ViewTours {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("View Tours");
 		frame.getContentPane().setLayout(null);
 		String details = "";
 		try {
@@ -101,85 +102,86 @@ public class ViewTours {
 		panel_3.setLayout(null);
 		frame.getContentPane().add(panel_3);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
+		JLabel labelID1 = new JLabel("");
 		String detail1 = connect(1);
-		lblNewLabel_2.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail1)));
-		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+		labelID1.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail1)));
+		labelID1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,1);
 				tourin.NewScreen(username,1);
 				frame.dispose();
 			}
 		});
-		lblNewLabel_2.setBounds(20, 11, 179, 180);
-		panel_3.add(lblNewLabel_2);
+		labelID1.setBounds(20, 11, 179, 180);
+		panel_3.add(labelID1);
 		
 	
-		JLabel label = new JLabel("");
+		JLabel labelID2 = new JLabel("");
 		String detail2 = connect(2);
-		label.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail2)));
-		label.addMouseListener(new MouseAdapter() {
+		labelID2.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail2)));
+		labelID2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,2);
 				tourin.NewScreen(username,2);
 				frame.dispose();
 			}
 		});
-		label.setBounds(230, 202, 179, 180);
-		panel_3.add(label);
+		labelID2.setBounds(20, 202, 179, 180);
+		panel_3.add(labelID2);
 		
-		JLabel label_1 = new JLabel("");
+		JLabel labelID3 = new JLabel("");
 		String detail3 = connect(3);
-		label_1.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail3)));
-		label_1.addMouseListener(new MouseAdapter() {
+		labelID3.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail3)));
+		labelID3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,3);
 				tourin.NewScreen(username,3);
 				frame.dispose();
 			}
 		});
-		label_1.setBounds(230, 11, 179, 180);
-		panel_3.add(label_1);
+		labelID3.setBounds(230, 11, 179, 180);
+		panel_3.add(labelID3);
 		
-		JLabel label_3 = new JLabel("");
+		JLabel labelID4 = new JLabel("");
 		String detail4 = connect(4);
-		label_3.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail4)));
-		label_3.addMouseListener(new MouseAdapter() {
+		labelID4.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail4)));
+		labelID4.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,4);
 				tourin.NewScreen(username,4);
 				frame.dispose();
 			}
 		});
-		label_3.setBounds(20, 202, 179, 180);
-		panel_3.add(label_3);
+		labelID4.setBounds(230, 202, 179, 180);
 		
-		JLabel label_2 = new JLabel("");
+		panel_3.add(labelID4);
+		
+		JLabel labelID5 = new JLabel("");
 		String detail5 = connect(5);
-		label_2.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail5)));
-		label_2.addMouseListener(new MouseAdapter() {
+		labelID5.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail5)));
+		labelID5.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,5);
 				tourin.NewScreen(username,5);
 				frame.dispose();
 			}
 		});
-		label_2.setBounds(440, 11, 179, 180);
-		panel_3.add(label_2);
+		labelID5.setBounds(440, 11, 179, 180);
+		panel_3.add(labelID5);
 		
 		
-		JLabel label_4 = new JLabel("");
+		JLabel labelID6 = new JLabel("");
 		String detail6 = connect(6);
-		label_4.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail6)));
-		label_4.addMouseListener(new MouseAdapter() {
+		labelID6.setIcon(new ImageIcon(ViewTours.class.getResource(""+detail6)));
+		labelID6.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				TourInfo tourin = new TourInfo(username,6);
 				tourin.NewScreen(username,6);
 				frame.dispose();
 			}
 		});
-		label_4.setBounds(440, 202, 179, 180);
-		panel_3.add(label_4);
+		labelID6.setBounds(440, 202, 179, 180);
+		panel_3.add(labelID6);
 		
 		
 		final JButton btnNewButton = new JButton("");

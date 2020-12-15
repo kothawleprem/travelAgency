@@ -44,6 +44,7 @@ public class UserDashboard {
 	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("User Dashboard - "+username);
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("");

@@ -59,6 +59,7 @@ public class RegisterPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Register");
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblregister = new JLabel("Register");
@@ -107,8 +108,6 @@ public class RegisterPage {
 		lblPassword.setBounds(45, 290, 110, 36);
 		frame.getContentPane().add(lblPassword);
 		
-		
-		
 		final JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/register.png")));
 		btnNewButton.setBorderPainted(false);
@@ -131,56 +130,18 @@ public class RegisterPage {
                 	Class.forName("org.postgresql.Driver");
 					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 					Statement stmt = con.createStatement();
-				    stmt.executeUpdate(query);
-					JOptionPane.showMessageDialog(null, "Account Created Successfully");
-	            	UserDashboard userdb = new UserDashboard(username);
-	     			userdb.NewScreen(username);
-	     			frame.dispose();
-				
+				    int x = stmt.executeUpdate(query);
+				    JOptionPane.showMessageDialog(null, "Account Created Successfully");
+				    UserDashboard userdb = new UserDashboard(username);
+		     		userdb.NewScreen(username);
+		     		frame.dispose();
+					
                 }
                 catch(Exception exp){
-                    System.out.println("Enter Valid details.");
-            }
+                	JOptionPane.showMessageDialog(null, "Account Already Exits.");
+                   // System.out.println(exp);
+                }   
                 
-                
-                
-                /*   try {
-                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/traveldb", "postgres", "premsk29");
-
-                    String query = "INSERT INTO customer values('" + username + "','" + name + "','" + email + "','" + password +  "','" + city +"','" + phone + "')";
-
-                    Statement sta = connection.createStatement();
-                    int x = sta.executeUpdate(query);
-                    if (x == 0) {
-                    	try {
-                    		/*UserAlreadyPresent uap;
-        	                uap = new UserAlreadyPresent();
-        	                throw uap;
-                    		InvalidPasswordException ipe;
-        	                ipe = new InvalidPasswordException("Please enter "
-        	                        + " valid password of length 8 containing one digit"
-        	                        + " and one Special Symbol");
-        	                
-        	                throw ipe; 
-                    	}
-                    	catch(InvalidPasswordException ipe)
-                    	{
-                    		JOptionPane.showMessageDialog(btnNewButton, ipe.getMessage());
-                    	}
-                        
-                    } else {
-                        JOptionPane.showMessageDialog(btnNewButton,
-                            "Welcome, Your account is sucessfully created");
-                        
-        						
-                    }
-                    UserDashboard userdb = new UserDashboard(username);
-    				userdb.NewScreen(username);
-    				frame.dispose();
-                    connection.close();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }  */
 			}   
                
 		});
@@ -230,40 +191,31 @@ public class RegisterPage {
 		lblNewLabel_3.setBounds(30, 11, 314, 387);
 		panel.add(lblNewLabel_3);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setBackground(new Color(65, 105, 225));
-		chckbxNewCheckBox.setBounds(45, 337, 28, 36);
-		frame.getContentPane().add(chckbxNewCheckBox);
 		
-		JLabel lblNewLabel_4 = new JLabel("I Agree the T&C.");
+		JLabel lblNewLabel_4 = new JLabel("By Registering You Agree  T&C.\r\n");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
-		lblNewLabel_4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Terms terms = new Terms();
-				terms.NewScreen();
-			}
-		});
-		lblNewLabel_4.setBounds(81, 347, 102, 19);
+		lblNewLabel_4.setBounds(10, 321, 228, 52);
 		frame.getContentPane().add(lblNewLabel_4);
 		
 		upassword = new JPasswordField();
 		upassword.setBounds(200, 302, 176, 20);
 		frame.getContentPane().add(upassword);
+		
+		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Terms terms = new Terms();
+				terms.NewScreen();
+				
+			}
+		});
+		btnNewButton_2.setBackground(new Color(65, 105, 225));
+		btnNewButton_2.setIcon(new ImageIcon(RegisterPage.class.getResource("/images/T&C.png")));
+		btnNewButton_2.setBorderPainted(false);
+		btnNewButton_2.setBounds(55, 361, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-}
-class InvalidPasswordException extends Exception
-{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	InvalidPasswordException(String message)
-    {
-        super(message);
-    }
 }

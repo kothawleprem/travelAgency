@@ -42,6 +42,7 @@ public class LogoutPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("Logout");
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		

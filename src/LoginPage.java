@@ -51,6 +51,7 @@ public class LoginPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Login");
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Username");

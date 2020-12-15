@@ -11,6 +11,8 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
+//import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -49,6 +51,7 @@ public class Welcome {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.setBounds(100, 100, 820, 480);
 		frame.setResizable(false);
+		frame.setTitle("Welcome - Travel Agency System");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -102,7 +105,7 @@ public class Welcome {
 			public void actionPerformed(ActionEvent e) {
 				LoginPage login = new LoginPage();
 				login.NewScreen();
-				frame.dispose();
+				frame.setVisible(false);
 			}
 		});
 		btnlogin.setIcon(new ImageIcon(Welcome.class.getResource("/images/loginbt.png")));

@@ -51,6 +51,7 @@ public class UpdateMyInformation {
 	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Update My Information - "+username);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();

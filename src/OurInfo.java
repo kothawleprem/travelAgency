@@ -42,6 +42,7 @@ public class OurInfo {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("Our Info");
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.getContentPane().setLayout(null);
 		
@@ -74,6 +75,9 @@ public class OurInfo {
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EnquiryPage enqpage = new EnquiryPage();
+				enqpage.NewScreen();
+				frame.setVisible(false);
 			}
 		});
 		button.setIcon(new ImageIcon(OurInfo.class.getResource("/images/enquiry.png")));

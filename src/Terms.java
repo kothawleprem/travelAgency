@@ -45,6 +45,7 @@ public class Terms {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Terms and Conditions");
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();

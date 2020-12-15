@@ -42,6 +42,7 @@ public class UserBookingSuccessful {
 	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Booking Successful - "+username);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");

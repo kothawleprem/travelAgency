@@ -14,10 +14,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
 
 public class UserBookingConfirmation {
 
 	private JFrame frame;
+	private JTextField textFieldPassengers;
 
 	/**
 	 * Launch the application.
@@ -49,9 +51,13 @@ public class UserBookingConfirmation {
 	private void initialize(final String username,final int id) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Booking Confirmation - "+username);
 		frame.getContentPane().setLayout(null);
 		
-		String name = "",tname="",phone="",email="",doj="",price="",details="";
+		String name = "",tname="",phone="",email="",doj="";
+		String price="";
+		String details="";
+		int fprice = 0;
 		try {
 			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 	         Statement selectStmt = connection.createStatement();
@@ -69,12 +75,19 @@ public class UserBookingConfirmation {
             {
 			  tname = rs2.getString(1);
 			  doj = rs2.getString(2);
-			  price = rs2.getString(3);
-			  details = rs2.getString(4);
+			  price = rs2.getString(4);
+			  
+			  details = rs2.getString(3);
             }
 		}catch(Exception e) {
 			System.out.println(e);
 		}
+		
+		
+		
+		
+		
+		
 		
 		
 		JLabel lblNewLabel = new JLabel("Confirm Your Booking");
@@ -112,7 +125,7 @@ public class UserBookingConfirmation {
 		lblCustomerPhone.setBounds(40, 265, 156, 42);
 		frame.getContentPane().add(lblCustomerPhone);
 		
-		JLabel lblCustomerEmail = new JLabel("Customer Age");
+		JLabel lblCustomerEmail = new JLabel("Customer Email");
 		lblCustomerEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCustomerEmail.setBounds(40, 305, 156, 42);
 		frame.getContentPane().add(lblCustomerEmail);
@@ -127,7 +140,7 @@ public class UserBookingConfirmation {
 		lbldynTourDoj.setBounds(260, 105, 320, 30);
 		frame.getContentPane().add(lbldynTourDoj);
 		
-		JLabel lbldynTourPrice = new JLabel(""+price);
+		final JLabel lbldynTourPrice = new JLabel("");
 		lbldynTourPrice.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lbldynTourPrice.setBounds(260, 185, 320, 30);
 		frame.getContentPane().add(lbldynTourPrice);
@@ -152,23 +165,67 @@ public class UserBookingConfirmation {
 		lbldynCustomerEmail.setBounds(260, 305, 320, 30);
 		frame.getContentPane().add(lbldynCustomerEmail);
 		
-		JButton btnNewButton = new JButton("Confirm My Booking");
+		textFieldPassengers = new JTextField();
+		textFieldPassengers.setBounds(577, 105, 116, 20);
+//		textFieldPassengers.setText("1");
+		frame.getContentPane().add(textFieldPassengers);
+		textFieldPassengers.setColumns(10);
+		
+		
+		JLabel lblNewLabel_1 = new JLabel("Total Number of Passengers");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(519, 68, 275, 36);
+		frame.getContentPane().add(lblNewLabel_1);
+		int per;
+		fprice = Integer.parseInt(price);
+		final int cost = fprice;
+		 JButton btnNewButton_1 = new JButton("");
+		 btnNewButton_1.setBackground(new Color(65, 105, 225));
+		btnNewButton_1.setBorderPainted(false);
+
+		 btnNewButton_1.setIcon(new ImageIcon(UserBookingConfirmation.class.getResource("/images/check.png")));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int amount = 0;
+				String p = textFieldPassengers.getText();
+				int person = Integer.parseInt(p);
+				
+				amount = person*cost;
+				lbldynTourPrice.setText(""+amount);
+			//	per = amount/cost;
+			}
+		});
+	//	btnNewButton_1.addActionListener((ActionListener) this);
+		btnNewButton_1.setBounds(570, 144, 133, 30);
+		frame.getContentPane().add(btnNewButton_1);
+		frame.setBounds(100, 100, 820, 480);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBackground(new Color(65, 105, 225));
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setIcon(new ImageIcon(UserBookingConfirmation.class.getResource("/images/makePayment.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 int flag=0;
 			    try {
 			    	Class.forName("org.postgresql.Driver");
 					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-					String query = "insert into booking (customer_username,tour_id) values('" + username + "','" + id + "')";
+					String query = "insert into booking (customer_username,tour_id,number_of_passengers) values('" + username + "','" + id + "','" + textFieldPassengers.getText() + "')";
 					Statement stmt = con.createStatement();
 				    stmt.executeUpdate(query);
-					JOptionPane.showMessageDialog(null, "Booking Confirmed Successfully");
+				    flag++;
 			    }catch(Exception exp)
 			    {
 			    	System.out.println(exp);
 			    }
-				UserBookingSuccessful ubooks = new UserBookingSuccessful(username);
-				ubooks.NewScreen(username);
-				frame.dispose();
+			   
+				if(flag==1) {
+				    JOptionPane.showMessageDialog(null, "Booking Confirmed Successfully");
+				    PaymentHome payHome = new PaymentHome(username,id);
+				    payHome.NewScreen(username, id);
+				    frame.dispose();
+				}
 				
 			}
 		});
@@ -190,11 +247,10 @@ public class UserBookingConfirmation {
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnBack.setBounds(473, 370, 156, 42);
 		frame.getContentPane().add(btnBack);
-		frame.setBounds(100, 100, 820, 480);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
 		
 		
 	}
-
 }
  

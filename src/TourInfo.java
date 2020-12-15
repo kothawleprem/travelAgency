@@ -55,19 +55,21 @@ public class TourInfo {
 	private void initialize(final String username,final int id) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Tour Info - "+username);
 		frame.getContentPane().setLayout(null);
 		
-		String name = "",details = "",doj="",price="";
+		String name = "",details = "",doj="",price="",image="";
 		try {
 			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 	         Statement selectStmt = connection.createStatement();
-			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price FROM tour WHERE tour_id like '%"+id+"%'");
+			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price,tour_image FROM tour WHERE tour_id like '%"+id+"%'");
 			 while(rs.next())
 	            {
 				  name = rs.getString(1);
 				  doj = rs.getString(2);
 				  price = rs.getString(4);
 				  details = rs.getString(3);
+				  image = rs.getString(5);
 	            }
 		
 		}catch(Exception e) {
@@ -181,6 +183,11 @@ public class TourInfo {
 		lbldynprice.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lbldynprice.setBounds(203, 256, 300, 25);
 		frame.getContentPane().add(lbldynprice);
+		
+		JLabel lblNewLabelImageTour = new JLabel("");
+		lblNewLabelImageTour.setIcon(new ImageIcon(TourInfo.class.getResource(""+image)));
+		lblNewLabelImageTour.setBounds(567, 113, 179, 180);
+		frame.getContentPane().add(lblNewLabelImageTour);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

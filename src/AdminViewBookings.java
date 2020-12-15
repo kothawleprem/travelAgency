@@ -54,10 +54,11 @@ public class AdminViewBookings {
 	private void initialize(final String username) {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("View Bookings");
 		frame.getContentPane().setLayout(null);
 		
 		
-		JLabel lblViewBookings = new JLabel("View Bookings");
+		JLabel lblViewBookings = new JLabel("View Bookings - "+username);
 		lblViewBookings.setForeground(Color.YELLOW);
 		lblViewBookings.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblViewBookings.setBounds(296, 8, 227, 49);

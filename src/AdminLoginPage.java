@@ -53,6 +53,7 @@ public class AdminLoginPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
+		frame.setTitle("Admin Login");
 		frame.getContentPane().setLayout(null);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
