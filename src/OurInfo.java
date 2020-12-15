@@ -48,7 +48,7 @@ public class OurInfo {
 		
 		JLabel lblNewLabel = new JLabel("Our Info");
 		lblNewLabel.setForeground(new Color(255, 255, 0));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(318, 11, 143, 39);
 		frame.getContentPane().add(lblNewLabel);
 		

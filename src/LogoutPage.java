@@ -59,7 +59,7 @@ public class LogoutPage {
 		
 		JLabel lblNewLabel_1 = new JLabel("Thank You!!!");
 		lblNewLabel_1.setForeground(Color.YELLOW);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel_1.setBounds(500, 61, 230, 57);
 		frame.getContentPane().add(lblNewLabel_1);
 		

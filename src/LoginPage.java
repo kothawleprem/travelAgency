@@ -118,7 +118,7 @@ public class LoginPage {
 		JLabel lblNoAccountSign = new JLabel("Need an Account?");
 		lblNoAccountSign.setForeground(Color.WHITE);
 		lblNoAccountSign.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNoAccountSign.setBounds(46, 314, 179, 29);
+		lblNoAccountSign.setBounds(46, 283, 179, 29);
 		frame.getContentPane().add(lblNoAccountSign);
 		
 		JButton btnRegister = new JButton("");
@@ -133,13 +133,13 @@ public class LoginPage {
 				frame.dispose();
 			}
 		});
-		btnRegister.setBounds(249, 314, 130, 35);
+		btnRegister.setBounds(249, 283, 130, 35);
 		frame.getContentPane().add(btnRegister);
 		
 		JLabel lblAdminLogin = new JLabel("Admin Login?");
 		lblAdminLogin.setForeground(Color.WHITE);
 		lblAdminLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAdminLogin.setBounds(46, 377, 128, 29);
+		lblAdminLogin.setBounds(46, 337, 128, 29);
 		frame.getContentPane().add(lblAdminLogin);
 		
 		JButton btnAdmin = new JButton("");
@@ -155,7 +155,7 @@ public class LoginPage {
 				
 			}
 		});
-		btnAdmin.setBounds(249, 384, 130, 35);
+		btnAdmin.setBounds(249, 337, 130, 35);
 		frame.getContentPane().add(btnAdmin);
 		
 		JLabel lblNewLabel_2 = new JLabel("Login");
@@ -174,6 +174,21 @@ public class LoginPage {
 		lblNewLabel_3.setIcon(new ImageIcon(LoginPage.class.getResource("/images/login.png")));
 		lblNewLabel_3.setBounds(27, 11, 325, 398);
 		panel.add(lblNewLabel_3);
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
+			public void actionPerformed(ActionEvent e) {
+				Welcome wel= new Welcome();
+				wel.main(null);
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setBackground(new Color(65, 105, 225));
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setIcon(new ImageIcon(LoginPage.class.getResource("/images/homebtn.png")));
+		btnNewButton_1.setBounds(158, 393, 130, 40);
+		frame.getContentPane().add(btnNewButton_1);
 		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

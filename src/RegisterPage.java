@@ -65,7 +65,7 @@ public class RegisterPage {
 		JLabel lblregister = new JLabel("Register");
 		lblregister.setForeground(Color.YELLOW);
 		lblregister.setBackground(Color.WHITE);
-		lblregister.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblregister.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblregister.setBounds(139, 27, 189, 52);
 		frame.getContentPane().add(lblregister);
 		

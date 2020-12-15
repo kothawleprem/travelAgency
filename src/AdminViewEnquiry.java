@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class AdminViewEnquiry {
 
@@ -110,6 +111,11 @@ public class AdminViewEnquiry {
         JLabel lblCustomerMessage = new JLabel("Customer Message");
         lblCustomerMessage.setBounds(629, 12, 123, 15);
         panel.add(lblCustomerMessage);
+        
+        JLabel lblNewLabel_1 = new JLabel("View Enquiry");
+        lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
+        lblNewLabel_1.setBounds(366, 29, 103, 14);
+        frame.getContentPane().add(lblNewLabel_1);
         
 	}
 

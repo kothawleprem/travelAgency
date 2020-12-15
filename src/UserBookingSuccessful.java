@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
 
 public class UserBookingSuccessful {
 
@@ -45,14 +46,9 @@ public class UserBookingSuccessful {
 		frame.setTitle("Booking Successful - "+username);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/tick.png")));
-		lblNewLabel.setBounds(294, 47, 325, 278);
-		frame.getContentPane().add(lblNewLabel);
-		
 		JLabel lblNewLabel_1 = new JLabel("Booking Done!!!");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(327, 11, 262, 45);
+		lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
+		lblNewLabel_1.setBounds(70, 11, 350, 45);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("");
@@ -67,8 +63,40 @@ public class UserBookingSuccessful {
 		btnNewButton.setBorderPainted(false);
 
 		btnNewButton.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/dashboard.png")));
-		btnNewButton.setBounds(331, 349, 153, 30);
+		btnNewButton.setBounds(124, 130, 153, 30);
 		frame.getContentPane().add(btnNewButton);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(449, 11, 345, 419);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(74, 71, 225, 252);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/tick.png")));
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MyBookings mybook = new MyBookings(username);
+				mybook.NewScreen(username);
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setBackground(new Color(65, 105, 225));
+		btnNewButton_1.setBorderPainted(false);
+
+		btnNewButton_1.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/viewb.png")));
+		btnNewButton_1.setBounds(124, 210, 153, 45);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.setBackground(new Color(65, 105, 225));
+		btnNewButton_2.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/logoutbtn.png")));
+		btnNewButton_2.setBounds(124, 297, 133, 45);
+		frame.getContentPane().add(btnNewButton_2);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

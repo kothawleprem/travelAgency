@@ -56,7 +56,7 @@ public class EnquiryPage {
 		
 		
 		JLabel lblNewLabel = new JLabel("Enquire");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(140, 29, 147, 46);
 		frame.getContentPane().add(lblNewLabel);
 		

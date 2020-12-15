@@ -58,7 +58,7 @@ public class MyBookings {
 		
 		JLabel lblNewLabel = new JLabel("My Bookings");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(287, 11, 203, 53);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -79,7 +79,7 @@ public class MyBookings {
 		panel.add(table);
 		
 		try {
-			String query = "select booking_id,tour_name,tour_doj,tour_details,tour_price from tour t join booking b on t.tour_id = b.tour_id where customer_username like '%"+username+"%' order by booking_id;";
+			String query = "select booking_id,tour_name,tour_doj,tour_details,tour_price,number_of_passengers from tour t join booking b on t.tour_id = b.tour_id where customer_username like '%"+username+"%' AND booking_status = 'Completed' order by booking_id;";
 			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
             PreparedStatement pst = connection.prepareStatement(query) ;
             ResultSet rs = pst.executeQuery();
@@ -91,24 +91,28 @@ public class MyBookings {
 		}
 		
 		 JLabel lblNewLabel_1 = new JLabel("Booking ID");
-         lblNewLabel_1.setBounds(62, 11, 82, 14);
+         lblNewLabel_1.setBounds(29, 11, 82, 14);
          panel.add(lblNewLabel_1);
          
          JLabel lblNewLabel_2 = new JLabel("Tour Name");
-         lblNewLabel_2.setBounds(207, 11, 71, 14);
+         lblNewLabel_2.setBounds(134, 11, 71, 14);
          panel.add(lblNewLabel_2);
          
          JLabel lblNewLabel_3 = new JLabel("Tour DOJ");
-         lblNewLabel_3.setBounds(352, 11, 71, 14);
+         lblNewLabel_3.setBounds(260, 11, 71, 14);
          panel.add(lblNewLabel_3);
          
          JLabel lblNewLabel_4 = new JLabel("Tour Details");
-         lblNewLabel_4.setBounds(642, 11, 71, 14);
+         lblNewLabel_4.setBounds(387, 11, 71, 14);
          panel.add(lblNewLabel_4);
          
          JLabel lblNewLabel_5 = new JLabel("Tour Price");
-         lblNewLabel_5.setBounds(498, 11, 71, 14);
+         lblNewLabel_5.setBounds(523, 11, 71, 14);
          panel.add(lblNewLabel_5);
+         
+         JLabel lblNewLabel_4_1 = new JLabel("Passengers");
+         lblNewLabel_4_1.setBounds(640, 11, 101, 14);
+         panel.add(lblNewLabel_4_1);
          
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {

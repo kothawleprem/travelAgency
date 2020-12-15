@@ -64,7 +64,7 @@ public class AdminAddTours {
 		frame.getContentPane().setBackground(new Color(65, 105, 225));
 		frame.setTitle("Add Tours - "+username);
 		frame.getContentPane().setLayout(null);
-		String tour_id_1 ="", tour_id_2 ="",tour_id_3 ="",tour_id_4 ="",tour_id_5 ="",tour_id_6 ="";
+		String tour_id_1 ="", tour_id_2 ="",tour_id_3 ="",tour_id_4 ="",tour_id_5 ="",tour_id_6 ="",tour_id_7 ="", tour_id_8 ="",tour_id_9 ="",tour_id_10 ="",tour_id_11 ="",tour_id_12 ="";
 		try {
 			String query = "Select tour_name from tour where tour_id = '1'";
 			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
@@ -80,8 +80,8 @@ public class AdminAddTours {
 		
 		JLabel lblNewLabel = new JLabel("Add Tours");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblNewLabel.setBounds(186, 25, 168, 58);
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
+		lblNewLabel.setBounds(186, 25, 224, 58);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblName = new JLabel("Name");
@@ -234,10 +234,12 @@ public class AdminAddTours {
 		lblNewLabel_4_5.setBounds(32, 201, 26, 14);
 		panel.add(lblNewLabel_4_5);
 		
+		
 		JLabel lblNewLabel_5 = new JLabel(""+tour_id_1);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_5.setBounds(75, 76, 198, 16);
 		panel.add(lblNewLabel_5);
+		
 		try {
 			String query = "Select tour_name from tour where tour_id = '2'";
 			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
@@ -331,10 +333,148 @@ public class AdminAddTours {
 		
 		JLabel lblNewLabel_6 = new JLabel("* TourName indicates no Tour is Currently added!!");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_6.setBounds(0, 363, 296, 14);
+		lblNewLabel_6.setBounds(0, 372, 296, 14);
 		panel.add(lblNewLabel_6);
 		
-
+		JLabel lblNewLabel_4_5_1 = new JLabel("7");
+		lblNewLabel_4_5_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_1.setBounds(32, 226, 26, 14);
+		panel.add(lblNewLabel_4_5_1);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '7'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_7 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_1 = new JLabel(""+tour_id_7);
+		lblNewLabel_5_5_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_1.setBounds(75, 228, 198, 16);
+		panel.add(lblNewLabel_5_5_1);
+		
+		
+		JLabel lblNewLabel_4_5_2 = new JLabel("8");
+		lblNewLabel_4_5_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_2.setBounds(32, 251, 26, 14);
+		panel.add(lblNewLabel_4_5_2);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '8'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_8 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_2 = new JLabel(""+tour_id_8);
+		lblNewLabel_5_5_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_2.setBounds(76, 253, 198, 16);
+		panel.add(lblNewLabel_5_5_2);
+		
+		JLabel lblNewLabel_4_5_3 = new JLabel("9");
+		lblNewLabel_4_5_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_3.setBounds(32, 276, 26, 14);
+		panel.add(lblNewLabel_4_5_3);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '9'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_9 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_3 = new JLabel(""+tour_id_9);
+		lblNewLabel_5_5_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_3.setBounds(76, 278, 198, 16);
+		panel.add(lblNewLabel_5_5_3);
+		
+		JLabel lblNewLabel_4_5_4 = new JLabel("10");
+		lblNewLabel_4_5_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_4.setBounds(32, 301, 26, 14);
+		panel.add(lblNewLabel_4_5_4);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '10'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_10 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_4 = new JLabel(""+tour_id_10);
+		lblNewLabel_5_5_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_4.setBounds(75, 303, 198, 16);
+		panel.add(lblNewLabel_5_5_4);
+		
+		JLabel lblNewLabel_4_5_5 = new JLabel("11");
+		lblNewLabel_4_5_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_5.setBounds(32, 326, 26, 14);
+		panel.add(lblNewLabel_4_5_5);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '11'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_11 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_5 = new JLabel(""+tour_id_11);
+		lblNewLabel_5_5_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_5.setBounds(76, 328, 198, 16);
+		panel.add(lblNewLabel_5_5_5);
+		
+		JLabel lblNewLabel_4_5_6 = new JLabel("12");
+		lblNewLabel_4_5_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_4_5_6.setBounds(32, 351, 26, 14);
+		panel.add(lblNewLabel_4_5_6);
+		
+		try {
+			String query = "Select tour_name from tour where tour_id = '12'";
+			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+	            Statement selectStmt = connection.createStatement();
+	            ResultSet rs = selectStmt.executeQuery(query);
+	            while(rs.next()) {
+	            	tour_id_12 = rs.getString(1);
+	            }
+	            connection.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		JLabel lblNewLabel_5_5_6 = new JLabel(""+tour_id_12);
+		lblNewLabel_5_5_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_5_5_6.setBounds(76, 350, 198, 16);
+		panel.add(lblNewLabel_5_5_6);
+		
 		JButton btnAddTour = new JButton("");
 		btnAddTour.setBorderPainted(false);
 
@@ -347,12 +487,13 @@ public class AdminAddTours {
 				String tour_price = textFieldPrice.getText();
 				String tour_image = textFieldImage.getText();
 				
+				int t_id = Integer.parseInt(tour_id);  
 				
 				 try {
 	                	Class.forName("org.postgresql.Driver");
 	                //	System.out.println("ID"+tour_id);
 						Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-						String query = "update tour set tour_name = '"+tour_name+"' , tour_doj = '"+tour_doj+"' , tour_details = '"+tour_details+"' , tour_price = '"+tour_price+"' , tour_image = '"+tour_image+"' where tour_id like '%"+tour_id+"%'";
+						String query = "update tour set tour_name = '"+tour_name+"' , tour_doj = '"+tour_doj+"' , tour_details = '"+tour_details+"' , tour_price = '"+tour_price+"' , tour_image = '"+tour_image+"' where tour_id = '"+t_id+"'";
 								
 						Statement stmt = con.createStatement();
 					    stmt.executeUpdate(query);

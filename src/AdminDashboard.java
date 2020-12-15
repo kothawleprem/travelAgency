@@ -62,7 +62,7 @@ public class AdminDashboard {
 		
 		JLabel lblAdminDashboard = new JLabel("Admin Dashboard");
 		lblAdminDashboard.setForeground(Color.YELLOW);
-		lblAdminDashboard.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblAdminDashboard.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblAdminDashboard.setBounds(464, 30, 287, 49);
 		frame.getContentPane().add(lblAdminDashboard);
 		
@@ -78,7 +78,7 @@ public class AdminDashboard {
 		button.setForeground(Color.BLACK);
 		button.setBorderPainted(false);
 		button.setBackground(new Color(65, 105, 225));
-		button.setBounds(527, 111, 130, 43);
+		button.setBounds(527, 111, 130, 38);
 		frame.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("");
@@ -93,7 +93,7 @@ public class AdminDashboard {
 		button_1.setForeground(Color.BLACK);
 		button_1.setBorderPainted(false);
 		button_1.setBackground(new Color(65, 105, 225));
-		button_1.setBounds(527, 219, 130, 49);
+		button_1.setBounds(527, 219, 130, 35);
 		frame.getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("");
@@ -108,7 +108,7 @@ public class AdminDashboard {
 		button_2.setForeground(Color.BLACK);
 		button_2.setBorderPainted(false);
 		button_2.setBackground(new Color(65, 105, 225));
-		button_2.setBounds(527, 335, 130, 35);
+		button_2.setBounds(527, 321, 130, 35);
 		frame.getContentPane().add(button_2);
 		
 		JButton button_3 = new JButton("");
@@ -123,7 +123,7 @@ public class AdminDashboard {
 		button_3.setForeground(Color.BLACK);
 		button_3.setBorderPainted(false);
 		button_3.setBackground(new Color(65, 105, 225));
-		button_3.setBounds(527, 165, 130, 43);
+		button_3.setBounds(527, 165, 130, 38);
 		frame.getContentPane().add(button_3);
 		
 		JButton btnNewButton = new JButton("");
@@ -131,14 +131,14 @@ public class AdminDashboard {
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminViewEnquiry viewenq = new AdminViewEnquiry();
-				viewenq.NewScreen();
+				AdminViewEnquiry viewenq = new AdminViewEnquiry(username);
+				viewenq.NewScreen(username);
 				frame.dispose();
 			}
 		});
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.setIcon(new ImageIcon(AdminDashboard.class.getResource("/images/viewenquiry.png")));
-		btnNewButton.setBounds(519, 280, 162, 37);
+		btnNewButton.setBounds(519, 268, 162, 35);
 		frame.getContentPane().add(btnNewButton);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

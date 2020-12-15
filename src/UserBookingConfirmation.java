@@ -91,7 +91,7 @@ public class UserBookingConfirmation {
 		
 		
 		JLabel lblNewLabel = new JLabel("Confirm Your Booking");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(251, 10, 318, 53);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -208,10 +208,11 @@ public class UserBookingConfirmation {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 int flag=0;
+				 String status = "Processing";
 			    try {
 			    	Class.forName("org.postgresql.Driver");
 					Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-					String query = "insert into booking (customer_username,tour_id,number_of_passengers) values('" + username + "','" + id + "','" + textFieldPassengers.getText() + "')";
+					String query = "insert into booking (customer_username,tour_id,number_of_passengers,booking_status) values('" + username + "','" + id + "','" + textFieldPassengers.getText() + "','" + status + "')";
 					Statement stmt = con.createStatement();
 				    stmt.executeUpdate(query);
 				    flag++;
@@ -221,7 +222,7 @@ public class UserBookingConfirmation {
 			    }
 			   
 				if(flag==1) {
-				    JOptionPane.showMessageDialog(null, "Booking Confirmed Successfully");
+				    JOptionPane.showMessageDialog(null, "Proceding to Payments!!");
 				    PaymentHome payHome = new PaymentHome(username,id);
 				    payHome.NewScreen(username, id);
 				    frame.dispose();

@@ -73,7 +73,7 @@ public class MyInformation {
 		
 		JLabel lblNewLabel = new JLabel("My Profile");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(121, 46, 173, 52);
 		frame.getContentPane().add(lblNewLabel);
 		

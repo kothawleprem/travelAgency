@@ -60,7 +60,7 @@ public class AdminViewBookings {
 		
 		JLabel lblViewBookings = new JLabel("View Bookings - "+username);
 		lblViewBookings.setForeground(Color.YELLOW);
-		lblViewBookings.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblViewBookings.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblViewBookings.setBounds(296, 8, 227, 49);
 		frame.getContentPane().add(lblViewBookings);
 		
@@ -78,7 +78,7 @@ public class AdminViewBookings {
 		panel.add(table);
 		
 		try {
-			String query = "select booking_id,customer_name,customer_phone,tour_name from customer c inner join booking b on c.customer_username = b.customer_username inner join tour t on b.tour_id = t.tour_id;";
+			String query = "select booking_id,customer_name,customer_phone,tour_name from customer c inner join booking b on c.customer_username = b.customer_username inner join tour t on b.tour_id = t.tour_id  where booking_status = 'Completed' order by booking_id;";
 			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
             PreparedStatement pst = connection.prepareStatement(query) ;
             ResultSet rs = pst.executeQuery();

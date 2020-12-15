@@ -67,7 +67,7 @@ public class UpdateMyInformation {
 		
 		JLabel lblNewLabel_1 = new JLabel("Update Information");
 		lblNewLabel_1.setForeground(Color.YELLOW);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 32));
+		lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel_1.setBounds(437, 40, 341, 54);
 		frame.getContentPane().add(lblNewLabel_1);
 		frame.setBounds(100, 100, 820, 480);

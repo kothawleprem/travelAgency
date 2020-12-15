@@ -55,8 +55,8 @@ public class Terms {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Terms And Conditions");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNewLabel.setBounds(268, 0, 258, 53);
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
+		lblNewLabel.setBounds(212, 0, 419, 53);
 		panel.add(lblNewLabel);
 		
 		JEditorPane dtrpnToTravelTo = new JEditorPane();

@@ -59,7 +59,8 @@ public class PaymentHome {
 		frame.getContentPane().setBackground(new Color(255, 255, 0));
 		frame.setTitle("Payment - "+username);
 		frame.getContentPane().setLayout(null);
-		String booking_id ="",tour_name="",tour_price="",customer_name="",customer_email="",customer_phone="",number_of_passengers="";
+		String booking_id ="";
+		String tour_name="", tour_price="", customer_name="", customer_email="", customer_phone="", number_of_passengers="";
 		try {
 			Class.forName("org.postgresql.Driver");
 			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
@@ -89,11 +90,11 @@ public class PaymentHome {
 		int person = Integer.parseInt(number_of_passengers);
 		int cost = Integer.parseInt(tour_price);
 		int amount = person*cost;
-		
+		final String bid = booking_id;
 		
 		JLabel lblNewLabel = new JLabel("Payments");
 		lblNewLabel.setBounds(234, 11, 225, 39);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		frame.getContentPane().add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
@@ -142,27 +143,27 @@ public class PaymentHome {
 		
 		JLabel lblBookingIDdyn = new JLabel(""+booking_id);
 		lblBookingIDdyn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblBookingIDdyn.setBounds(275, 38, 176, 20);
+		lblBookingIDdyn.setBounds(275, 38, 399, 20);
 		panel.add(lblBookingIDdyn);
 		
 		JLabel lblCustomerNamedyn = new JLabel(""+customer_name);
 		lblCustomerNamedyn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblCustomerNamedyn.setBounds(275, 69, 176, 20);
+		lblCustomerNamedyn.setBounds(275, 69, 399, 20);
 		panel.add(lblCustomerNamedyn);
 		
 		JLabel lblEmaildyn = new JLabel(""+customer_email);
 		lblEmaildyn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblEmaildyn.setBounds(275, 100, 195, 20);
+		lblEmaildyn.setBounds(275, 100, 399, 20);
 		panel.add(lblEmaildyn);
 		
 		JLabel lblPhonedyn = new JLabel(""+customer_phone);
 		lblPhonedyn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblPhonedyn.setBounds(274, 131, 244, 20);
+		lblPhonedyn.setBounds(274, 131, 413, 20);
 		panel.add(lblPhonedyn);
 		
 		JLabel lblTourNamedyn = new JLabel(""+tour_name);
 		lblTourNamedyn.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblTourNamedyn.setBounds(275, 162, 125, 20);
+		lblTourNamedyn.setBounds(275, 162, 399, 20);
 		panel.add(lblTourNamedyn);
 		
 		JLabel lblPricedyn = new JLabel("");
@@ -208,10 +209,16 @@ public class PaymentHome {
 					ResultSet rs = stmt.executeQuery(query);
 					if(rs.next())
 					{
+						try {
+							String query2 = "update booking set booking_status = 'Completed' where booking_id = '"+bid+"' ";
+                            stmt.executeUpdate(query2);
+                            UserBookingSuccessful ubooks = new UserBookingSuccessful(username);
+    						ubooks.NewScreen(username);
+    						frame.dispose();
+						}catch(Exception ep) {
+							System.out.println(ep);
+						}
 						
-						UserBookingSuccessful ubooks = new UserBookingSuccessful(username);
-						ubooks.NewScreen(username);
-						frame.dispose();
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "Invalid Details!");
@@ -232,6 +239,22 @@ public class PaymentHome {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblNewLabel_3.setBounds(234, 387, 237, 20);
 		frame.getContentPane().add(lblNewLabel_3);
+		
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewTours view = new ViewTours(username);
+				view.NewScreen(username);
+				frame.dispose();
+			}
+			
+		});
+		btnNewButton_1.setBackground(Color.YELLOW);
+		btnNewButton_1.setBorderPainted(false);
+
+		btnNewButton_1.setIcon(new ImageIcon(PaymentHome.class.getResource("/images/cancel.png")));
+		btnNewButton_1.setBounds(566, 379, 135, 39);
+		frame.getContentPane().add(btnNewButton_1);
 		
 		
 		

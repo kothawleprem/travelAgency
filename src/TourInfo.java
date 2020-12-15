@@ -78,7 +78,7 @@ public class TourInfo {
 		
 		JLabel lblNewLabel = new JLabel("Tour Info");
 		lblNewLabel.setForeground(new Color(255, 255, 0));
-		lblNewLabel.setFont(new Font("T ahoma", Font.PLAIN, 32));
+		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
 		lblNewLabel.setBounds(294, 36, 192, 39);
 		frame.getContentPane().add(lblNewLabel);
 		 
