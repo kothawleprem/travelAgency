@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
@@ -201,6 +202,31 @@ public class ViewTours2 {
 		lblNewLabel_1.setBounds(0, 0, 127, 243);
 		panel.add(lblNewLabel_1);
 		
+		String [] unames ;
+		ArrayList<String> mylist = new ArrayList<String>();
+		try {
+			Class.forName("org.postgresql.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+			Statement stmt = con.createStatement();
+			String query = "Select admin_username from admin";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				mylist.add(rs.getString(1));
+				
+			}
+			con.close();
+		}catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		int flag = 0;
+		for(int i=0;i<mylist.size();i++) {
+			if( username.contentEquals(mylist.get(i)))
+				flag=1;
+
+		}
+		final int check=flag;
+		
 		JButton btnDashboard = new JButton("");
 		btnDashboard.setIcon(new ImageIcon(ViewTours2.class.getResource("/images/dashboard.png")));
 		btnDashboard.addActionListener(new ActionListener() {
@@ -226,6 +252,7 @@ public class ViewTours2 {
 				
 			}
 		});
+		flag=0;
 		btnDashboard.setForeground(Color.BLACK);
 		btnDashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDashboard.setBorderPainted(false);

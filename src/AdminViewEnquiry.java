@@ -90,31 +90,10 @@ public class AdminViewEnquiry {
          btnNewButton.setIcon(new ImageIcon(AdminViewEnquiry.class.getResource("/images/back.png")));
          btnNewButton.setBounds(347, 409, 151, 30);
          frame.getContentPane().add(btnNewButton);
-         
-		JPanel panel = new JPanel();
-        panel.setBounds(10, 54, 784, 38);
-        frame.getContentPane().add(panel);
-        panel.setLayout(null);
-        
-        JLabel lblNewLabel = new JLabel("Enquiry ID");
-        lblNewLabel.setBounds(37, 11, 66, 16);
-        panel.add(lblNewLabel);
-        
-        JLabel lblCustomerName = new JLabel("Customer Name");
-        lblCustomerName.setBounds(211, 12, 86, 15);
-        panel.add(lblCustomerName);
-        
-        JLabel lblCustomerPhone = new JLabel("Customer Phone");
-        lblCustomerPhone.setBounds(429, 12, 86, 15);
-        panel.add(lblCustomerPhone);
-        
-        JLabel lblCustomerMessage = new JLabel("Customer Message");
-        lblCustomerMessage.setBounds(629, 12, 123, 15);
-        panel.add(lblCustomerMessage);
         
         JLabel lblNewLabel_1 = new JLabel("View Enquiry");
         lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
-        lblNewLabel_1.setBounds(366, 29, 103, 14);
+        lblNewLabel_1.setBounds(304, 28, 236, 38);
         frame.getContentPane().add(lblNewLabel_1);
         
 	}

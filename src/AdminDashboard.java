@@ -63,7 +63,7 @@ public class AdminDashboard {
 		JLabel lblAdminDashboard = new JLabel("Admin Dashboard");
 		lblAdminDashboard.setForeground(Color.YELLOW);
 		lblAdminDashboard.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblAdminDashboard.setBounds(464, 30, 287, 49);
+		lblAdminDashboard.setBounds(439, 29, 340, 49);
 		frame.getContentPane().add(lblAdminDashboard);
 		
 		JButton button = new JButton("");

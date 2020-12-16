@@ -79,6 +79,7 @@ public class UserBookingConfirmation {
 			  
 			  details = rs2.getString(3);
             }
+			connection.close();
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -91,78 +92,93 @@ public class UserBookingConfirmation {
 		
 		
 		JLabel lblNewLabel = new JLabel("Confirm Your Booking");
+		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblNewLabel.setBounds(251, 10, 318, 53);
+		lblNewLabel.setBounds(251, 10, 412, 53);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblTourName = new JLabel("Tour Name");
+		lblTourName.setForeground(Color.YELLOW);
 		lblTourName.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTourName.setBounds(40, 65, 133, 42);
 		frame.getContentPane().add(lblTourName);
 		
 		JLabel lblTourDoj = new JLabel("Tour DOJ");
+		lblTourDoj.setForeground(Color.YELLOW);
 		lblTourDoj.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTourDoj.setBounds(40, 105, 133, 42);
 		frame.getContentPane().add(lblTourDoj);
 		
 		JLabel lblTourDetails = new JLabel("Tour Details");
+		lblTourDetails.setForeground(Color.YELLOW);
 		lblTourDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTourDetails.setBounds(40, 145, 133, 42);
 		frame.getContentPane().add(lblTourDetails);
 		
 		JLabel lblTourPrice = new JLabel("Tour Price");
+		lblTourPrice.setForeground(Color.YELLOW);
 		lblTourPrice.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblTourPrice.setBounds(40, 185, 133, 42);
 		frame.getContentPane().add(lblTourPrice);
 		
 		JLabel lblCustomerName = new JLabel("Customer Name");
+		lblCustomerName.setForeground(Color.YELLOW);
 		lblCustomerName.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCustomerName.setBounds(40, 225, 156, 42);
 		frame.getContentPane().add(lblCustomerName);
 		
 		JLabel lblCustomerPhone = new JLabel("Customer Phone");
+		lblCustomerPhone.setForeground(Color.YELLOW);
 		lblCustomerPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCustomerPhone.setBounds(40, 265, 156, 42);
 		frame.getContentPane().add(lblCustomerPhone);
 		
 		JLabel lblCustomerEmail = new JLabel("Customer Email");
+		lblCustomerEmail.setForeground(Color.YELLOW);
 		lblCustomerEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblCustomerEmail.setBounds(40, 305, 156, 42);
 		frame.getContentPane().add(lblCustomerEmail);
 		
 		JLabel lbldynTourName = new JLabel(""+tname);
+		lbldynTourName.setForeground(Color.WHITE);
 		lbldynTourName.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynTourName.setBounds(260, 65, 320, 30);
+		lbldynTourName.setBounds(220, 70, 300, 30);
 		frame.getContentPane().add(lbldynTourName);
 		
 		JLabel lbldynTourDoj = new JLabel(""+doj);
+		lbldynTourDoj.setForeground(Color.WHITE);
 		lbldynTourDoj.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynTourDoj.setBounds(260, 105, 320, 30);
+		lbldynTourDoj.setBounds(220, 105, 320, 30);
 		frame.getContentPane().add(lbldynTourDoj);
 		
 		final JLabel lbldynTourPrice = new JLabel("");
+		lbldynTourPrice.setForeground(Color.WHITE);
 		lbldynTourPrice.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynTourPrice.setBounds(260, 185, 320, 30);
+		lbldynTourPrice.setBounds(220, 190, 320, 30);
 		frame.getContentPane().add(lbldynTourPrice);
 		
 		JLabel lbldynDetails = new JLabel(""+details);
+		lbldynDetails.setForeground(Color.WHITE);
 		lbldynDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynDetails.setBounds(260, 145, 320, 30);
+		lbldynDetails.setBounds(220, 150, 320, 30);
 		frame.getContentPane().add(lbldynDetails);
 		
 		JLabel lbldynCustomerName = new JLabel(""+name);
+		lbldynCustomerName.setForeground(Color.WHITE);
 		lbldynCustomerName.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynCustomerName.setBounds(260, 225, 320, 30);
+		lbldynCustomerName.setBounds(220, 235, 320, 30);
 		frame.getContentPane().add(lbldynCustomerName);
 		
 		JLabel lbldynCustomerPhone = new JLabel(""+phone);
+		lbldynCustomerPhone.setForeground(Color.WHITE);
 		lbldynCustomerPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynCustomerPhone.setBounds(260, 265, 320, 30);
+		lbldynCustomerPhone.setBounds(220, 275, 320, 30);
 		frame.getContentPane().add(lbldynCustomerPhone);
 		
 		JLabel lbldynCustomerEmail = new JLabel(""+email);
+		lbldynCustomerEmail.setForeground(Color.WHITE);
 		lbldynCustomerEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lbldynCustomerEmail.setBounds(260, 305, 320, 30);
+		lbldynCustomerEmail.setBounds(220, 305, 320, 30);
 		frame.getContentPane().add(lbldynCustomerEmail);
 		
 		textFieldPassengers = new JTextField();
@@ -173,6 +189,7 @@ public class UserBookingConfirmation {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Total Number of Passengers");
+		lblNewLabel_1.setForeground(Color.YELLOW);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(519, 68, 275, 36);
 		frame.getContentPane().add(lblNewLabel_1);
@@ -216,6 +233,7 @@ public class UserBookingConfirmation {
 					Statement stmt = con.createStatement();
 				    stmt.executeUpdate(query);
 				    flag++;
+				    con.close();
 			    }catch(Exception exp)
 			    {
 			    	System.out.println(exp);

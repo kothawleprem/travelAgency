@@ -83,6 +83,7 @@ public class AdminViewBookings {
             PreparedStatement pst = connection.prepareStatement(query) ;
             ResultSet rs = pst.executeQuery();
             table.setModel(DbUtils.resultSetToTableModel(rs));
+            connection.close();
 		}catch(Exception e) {
 			System.out.println(e);
 		}

@@ -109,7 +109,7 @@ public class UpdateMyInformation {
                 city = rs.getString(4);
       //Fourth Column
             }
-		
+            connection.close();
 		}catch(Exception exp) {
 			System.out.println(exp);
 		}
@@ -171,7 +171,7 @@ public class UpdateMyInformation {
 					Statement stmt = con.createStatement();
 					stmt.executeUpdate(query);
 					JOptionPane.showMessageDialog(null, "Customer Detail Updated Successfully");
-				
+					con.close();
 				}catch(Exception exp) {
 					System.out.println(exp);
 				}

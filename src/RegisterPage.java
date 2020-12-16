@@ -135,7 +135,7 @@ public class RegisterPage {
 				    UserDashboard userdb = new UserDashboard(username);
 		     		userdb.NewScreen(username);
 		     		frame.dispose();
-					
+		     		con.close();
                 }
                 catch(Exception exp){
                 	JOptionPane.showMessageDialog(null, "Account Already Exits.");

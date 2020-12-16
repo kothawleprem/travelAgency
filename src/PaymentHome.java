@@ -81,7 +81,7 @@ public class PaymentHome {
             	customer_email = rs2.getString(2);
             	customer_phone = rs2.getString(3);
             }
-            
+            connection.close();
 		}catch(Exception e) {
 			System.out.println(e);
 		}
@@ -201,13 +201,20 @@ public class PaymentHome {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 String crdno="";
+				 String code="";
 				try {
 					Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 
 					Statement stmt = connection.createStatement();
 					String query = "Select * from transaction where card_number like '"+card_number+"%' AND security_code like '"+security_code+"%'";
 					ResultSet rs = stmt.executeQuery(query);
-					if(rs.next())
+					while(rs.next())
+					{
+						crdno = rs.getString(1);
+						code = rs.getString(2) ;
+					}
+					if(crdno.equals(card_number) || code.equals(security_code))
 					{
 						try {
 							String query2 = "update booking set booking_status = 'Completed' where booking_id = '"+bid+"' ";
@@ -223,6 +230,7 @@ public class PaymentHome {
 					else {
 						JOptionPane.showMessageDialog(null, "Invalid Details!");
 					}
+					connection.close();
 				}catch(Exception exp) {
 					System.out.println(exp);
 				}	

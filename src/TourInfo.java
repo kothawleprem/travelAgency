@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 //import javax.swing.JTextArea;
 //import javax.swing.JTextPane;
@@ -71,7 +72,8 @@ public class TourInfo {
 				  details = rs.getString(3);
 				  image = rs.getString(5);
 	            }
-		
+				connection.close();
+
 		}catch(Exception e) {
 		System.out.println(e);	
 		}
@@ -101,6 +103,31 @@ public class TourInfo {
 		lbldetail.setBounds(107, 215, 86, 25);
 		frame.getContentPane().add(lbldetail);
 		
+		String [] unames ;
+		ArrayList<String> mylist = new ArrayList<String>();
+		try {
+			Class.forName("org.postgresql.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+			Statement stmt = con.createStatement();
+			String query = "Select admin_username from admin";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				mylist.add(rs.getString(1));
+				
+			}
+			con.close();
+		}catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		int flag = 0;
+		for(int i=0;i<mylist.size();i++) {
+			if( username.contentEquals(mylist.get(i)))
+				flag=1;
+
+		}
+		final int check=flag;
+		
 		final JButton btnNewButton = new JButton("");
 		btnNewButton.setBackground(new Color(65, 105, 225));
 		btnNewButton.setBorderPainted(false);
@@ -114,7 +141,7 @@ public class TourInfo {
 					JOptionPane.showMessageDialog(btnNewButton, "Not logged in");
 					
 				}
-				else if(username.contains("admin"))
+				else if(check==1)
 				{
 					JOptionPane.showMessageDialog(btnNewButton, "You are an Admin!");
 				}
@@ -127,7 +154,7 @@ public class TourInfo {
 				
 			}
 		});
-		
+		flag=0;
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

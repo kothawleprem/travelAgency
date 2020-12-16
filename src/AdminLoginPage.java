@@ -108,6 +108,7 @@ public class AdminLoginPage {
 						
 			
 		});
+		
 		btnNewButton.setBounds(116, 223, 150, 35);
 		frame.getContentPane().add(btnNewButton);
 		

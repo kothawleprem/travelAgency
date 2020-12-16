@@ -136,10 +136,11 @@ public class EnquiryPage {
 					    Welcome wel= new Welcome();
 						wel.main(null);
 						frame.dispose();
+						 con.close();
 				    }
 				    else
 				    	flag=0;
-				    
+				   
 				}catch(Exception exp) {
 					System.out.println(exp);
 				}

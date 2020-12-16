@@ -63,7 +63,9 @@ public class MyInformation {
                 city = rs.getString(4);
       //Fourth Column
             }
+            connection.close();
 		}
+		 
 		 catch (Exception e) {
 		        e.printStackTrace();
 		 }				

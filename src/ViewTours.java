@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
@@ -64,6 +65,7 @@ public class ViewTours {
             {
 				details = rs.getString(1);
             }
+			con.close();
 			
 		}catch(Exception e) {
 			System.out.println(e);
@@ -79,23 +81,7 @@ public class ViewTours {
 		frame.setTitle("View Tours");
 		frame.getContentPane().setLayout(null);
 		String details = "";
-/*		try {
-			Class.forName("org.postgresql.Driver");
-			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
-			Statement selectStmt = con.createStatement();
-			ResultSet rs = selectStmt.executeQuery("select tour_details from tour where tour_id = ''");
-			while(rs.next())
-            {
-				details = rs.getString(1);
-            }
-			//System.out.println("Hello"+details);
-		}catch(Exception e) {
-			System.out.println(e);
-		} */
-	//	JScrollPane jp = new JScrollPane();
-		
 		JPanel panel_3 = new JPanel();
-	//	panel_3.setViewportView(panel_3);
 		panel_3.setBackground(Color.YELLOW);
 		panel_3.setBounds(150, 25, 640, 400);
 		frame.getContentPane().add(panel_3);
@@ -216,6 +202,31 @@ public class ViewTours {
 		lblNewLabel_1.setBounds(0, 0, 127, 247);
 		panel.add(lblNewLabel_1);
 		
+		String [] unames ;
+		ArrayList<String> mylist = new ArrayList<String>();
+		try {
+			Class.forName("org.postgresql.Driver");
+			Connection con =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
+			Statement stmt = con.createStatement();
+			String query = "Select admin_username from admin";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				mylist.add(rs.getString(1));
+				
+			}
+			con.close();
+		}catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		int flag = 0;
+		for(int i=0;i<mylist.size();i++) {
+			if( username.contentEquals(mylist.get(i)))
+				flag=1;
+
+		}
+		final int check=flag;
+		
 		JButton btnDashboard = new JButton("");
 		btnDashboard.setIcon(new ImageIcon(ViewTours.class.getResource("/images/dashboard.png")));
 		btnDashboard.addActionListener(new ActionListener() {
@@ -225,12 +236,13 @@ public class ViewTours {
 					JOptionPane.showMessageDialog(btnNewButton, "Not logged in");
 					
 				}
-				else if(username.contains("admin"))
+				else if(check==1)
 					{
 
 					AdminDashboard admindb = new AdminDashboard(username);
 					admindb.NewScreen(username);
 					frame.dispose();
+					
                   }
 				else
 				{
@@ -241,6 +253,7 @@ public class ViewTours {
 				
 			}
 		});
+		flag=0;
 		btnDashboard.setForeground(Color.BLACK);
 		btnDashboard.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDashboard.setBorderPainted(false);
