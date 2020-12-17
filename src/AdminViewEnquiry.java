@@ -79,9 +79,9 @@ public class AdminViewEnquiry {
 		 JButton btnNewButton = new JButton("");
          btnNewButton.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
-         		UserDashboard userdb = new UserDashboard(username);
-					userdb.NewScreen(username);
-					frame.dispose();
+         		AdminDashboard admindb = new AdminDashboard(username);
+				admindb.NewScreen(username);
+				frame.dispose();
          	}
          });
          
@@ -92,6 +92,7 @@ public class AdminViewEnquiry {
          frame.getContentPane().add(btnNewButton);
         
         JLabel lblNewLabel_1 = new JLabel("View Enquiry");
+        lblNewLabel_1.setForeground(Color.YELLOW);
         lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
         lblNewLabel_1.setBounds(304, 28, 236, 38);
         frame.getContentPane().add(lblNewLabel_1);

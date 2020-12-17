@@ -173,6 +173,13 @@ public class AdminAddTours {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewBack = new JButton("");
+		btnNewBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdminDashboard admindb = new AdminDashboard(username);
+				admindb.NewScreen(username);
+     			frame.dispose();
+			}
+		});
 		btnNewBack.setBorderPainted(false);
 		btnNewBack.setIcon(new ImageIcon(AdminAddTours.class.getResource("/images/back.png")));
 		btnNewBack.setBackground(new Color(65, 105, 225));

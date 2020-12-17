@@ -58,10 +58,10 @@ public class AdminViewBookings {
 		frame.getContentPane().setLayout(null);
 		
 		
-		JLabel lblViewBookings = new JLabel("View Bookings - "+username);
+		JLabel lblViewBookings = new JLabel("View Bookings");
 		lblViewBookings.setForeground(Color.YELLOW);
 		lblViewBookings.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblViewBookings.setBounds(296, 8, 227, 49);
+		lblViewBookings.setBounds(296, 8, 339, 49);
 		frame.getContentPane().add(lblViewBookings);
 		
 		JScrollPane scrollPane = new JScrollPane();

@@ -1,4 +1,3 @@
-//Prem Kothawle S.E IT A-04
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;

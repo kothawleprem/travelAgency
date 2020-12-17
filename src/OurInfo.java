@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
 
 public class OurInfo {
 
@@ -56,6 +57,13 @@ public class OurInfo {
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(28, 71, 752, 310);
 		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JEditorPane dtrpnTheTravelAgency = new JEditorPane();
+		dtrpnTheTravelAgency.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		dtrpnTheTravelAgency.setText("A passenger finds it very difficult to search for the best tours as he/she must browse multiple records, contact many travel agents etc. which is a tedious process and is time consuming.\r\n\r\nThis Travel Agency System was established to cater the need of increasing travel related issues faced by the passengers.\r\n\r\nThis system makes travel easy and comfortable for the Passengers.\r\n\r\nAnyone can ask agency their queires and interested passengers can register and further login to avail the \r\nservices.\r\n\r\nIt has the feature to view past bookings and add number of passengers too.\r\n\r\nAdmins would view your bookings and read to your queries.\r\n\r\n\r\n");
+		dtrpnTheTravelAgency.setBounds(10, 11, 732, 288);
+		panel.add(dtrpnTheTravelAgency);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {

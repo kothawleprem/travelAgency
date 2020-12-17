@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
 
 public class EnquiryPage {
 
@@ -88,17 +89,19 @@ public class EnquiryPage {
 		frame.getContentPane().add(textFieldContact);
 	//	econtact = textFieldContact.getText();
 		
-		final JTextArea textAreaMessage = new JTextArea();
-		textAreaMessage.setBounds(127, 194, 198, 191);
-		frame.getContentPane().add(textAreaMessage);
-		//emessage = textAreaMessage.getText();
+		final JEditorPane editorPane = new JEditorPane();
+		editorPane.setBounds(127, 190, 198, 195);
+		frame.getContentPane().add(editorPane);
+
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(423, 29, 371, 401);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setBackground(Color.WHITE);
 		lblNewLabel_4.setIcon(new ImageIcon(EnquiryPage.class.getResource("/images/enqpage.png")));
 		lblNewLabel_4.setBounds(0, 0, 371, 401);
 		panel.add(lblNewLabel_4);
@@ -108,7 +111,7 @@ public class EnquiryPage {
 			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent e) {
 				String ename=textFieldName.getText();
-				String emessage=textAreaMessage.getText();
+				String emessage=editorPane.getText();
 				String econtact=textFieldContact.getText();
 				int flag = 0;
 		    	if(ename.length()==0) {
@@ -153,6 +156,9 @@ public class EnquiryPage {
 		btnNewButton.setBackground(new Color(255, 255, 0));
 		btnNewButton.setBounds(147, 396, 163, 36);
 		frame.getContentPane().add(btnNewButton);
+		
+		
+		
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

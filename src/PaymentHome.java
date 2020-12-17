@@ -19,12 +19,14 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class PaymentHome {
 
 	private JFrame frame;
 	private JTextField textFieldCardNumber;
-	private JTextField textFieldSecurityCode;
+	
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -187,15 +189,14 @@ public class PaymentHome {
 		frame.getContentPane().add(textFieldCardNumber);
 		textFieldCardNumber.setColumns(10);
 		final String card_number = textFieldCardNumber.getText();
-		
-		textFieldSecurityCode = new JTextField();
-		textFieldSecurityCode.setColumns(10);
-		textFieldSecurityCode.setBounds(303, 338, 207, 20);
-		frame.getContentPane().add(textFieldSecurityCode);
-		final String security_code = textFieldSecurityCode.getText();
+	
 		
 		
-		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(303, 338, 207, 20);
+		frame.getContentPane().add(passwordField);
+		@SuppressWarnings("deprecation")
+		final String security_code = passwordField.getText();
 		
 		
 		JButton btnNewButton = new JButton("");
@@ -258,6 +259,8 @@ public class PaymentHome {
 		btnNewButton_1.setIcon(new ImageIcon(PaymentHome.class.getResource("/images/cancel.png")));
 		btnNewButton_1.setBounds(566, 379, 135, 39);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		
 		
 		
 		
