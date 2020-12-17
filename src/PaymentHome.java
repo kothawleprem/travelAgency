@@ -209,12 +209,7 @@ public class PaymentHome {
 					Statement stmt = connection.createStatement();
 					String query = "Select * from transaction where card_number like '"+card_number+"%' AND security_code like '"+security_code+"%'";
 					ResultSet rs = stmt.executeQuery(query);
-					while(rs.next())
-					{
-						crdno = rs.getString(1);
-						code = rs.getString(2) ;
-					}
-					if(crdno.equals(card_number) || code.equals(security_code))
+					if(rs.next())
 					{
 						try {
 							String query2 = "update booking set booking_status = 'Completed' where booking_id = '"+bid+"' ";
@@ -225,8 +220,8 @@ public class PaymentHome {
 						}catch(Exception ep) {
 							System.out.println(ep);
 						}
-						
 					}
+					
 					else {
 						JOptionPane.showMessageDialog(null, "Invalid Details!");
 					}

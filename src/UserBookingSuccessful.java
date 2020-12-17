@@ -47,8 +47,9 @@ public class UserBookingSuccessful {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Booking Done!!!");
+		lblNewLabel_1.setForeground(Color.YELLOW);
 		lblNewLabel_1.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblNewLabel_1.setBounds(70, 11, 350, 45);
+		lblNewLabel_1.setBounds(73, 27, 350, 45);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("");
@@ -93,9 +94,11 @@ public class UserBookingSuccessful {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.setBorderPainted(false);
+
 		btnNewButton_2.setBackground(new Color(65, 105, 225));
 		btnNewButton_2.setIcon(new ImageIcon(UserBookingSuccessful.class.getResource("/images/logoutbtn.png")));
-		btnNewButton_2.setBounds(124, 297, 133, 45);
+		btnNewButton_2.setBounds(137, 296, 133, 45);
 		frame.getContentPane().add(btnNewButton_2);
 		frame.setBounds(100, 100, 820, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

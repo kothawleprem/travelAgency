@@ -63,7 +63,7 @@ public class TourInfo {
 		try {
 			 Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TravelAgency", "postgres", "prem");
 	         Statement selectStmt = connection.createStatement();
-			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price,tour_image FROM tour WHERE tour_id like '%"+id+"%'");
+			 ResultSet rs = selectStmt.executeQuery("SELECT tour_name,tour_doj,tour_details,tour_price,tour_image FROM tour WHERE tour_id = '"+id+"'");
 			 while(rs.next())
 	            {
 				  name = rs.getString(1);

@@ -59,7 +59,7 @@ public class MyBookings {
 		JLabel lblNewLabel = new JLabel("My Bookings");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 32));
-		lblNewLabel.setBounds(287, 11, 203, 53);
+		lblNewLabel.setBounds(287, 11, 266, 53);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
